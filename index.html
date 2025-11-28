@@ -26,6 +26,12 @@
       padding: 20px;
       text-align: center;
     }
+    /* Container for embedded module */
+    #module-container {
+      margin: 20px auto;
+      max-width: 1200px;
+      min-height: 500px;
+    }
   </style>
 </head>
 <body>
@@ -33,10 +39,15 @@
     <h1>TEST MODUŁU</h1>
   </header>
 
-  
-    alfa<br>
-<script src="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app/embed-module.js" data-datapolis-module="73278a69-7079-4cfd-a8f6-dea8bb910cc1" data-base-url="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app"></script>
-<br>beta
-  
+  <main>
+    <!-- Container for the embedded module -->
+    <div id="module-container"></div>
+    
+    <!-- Embed script -->
+    <script src="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app/embed-module.js" 
+            data-datapolis-module="73278a69-7079-4cfd-a8f6-dea8bb910cc1" 
+            data-base-url="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app"
+            data-container="module-container"></script>
+  </main>
 </body>
 </html>
