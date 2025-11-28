@@ -1,53 +1,840 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>TEST MODUŁU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Datapolis – Automatyzacja procesów biznesowych</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Datapolis – platforma do modelowania i automatyzacji procesów biznesowych w środowisku Microsoft 365." />
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    :root {
+      --color-primary: #003642;
+      --color-primary-light: #2e5e6b;
+      --color-bg: #f5f7fa;
+      --color-text: #1f2933;
+      --color-muted: #6b7280;
+      --radius-lg: 14px;
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
     }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+
     header {
-      background: #003642;
-      color: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      letter-spacing: 0.08em;
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(145deg, var(--color-primary), var(--color-primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-menu a {
+      color: var(--color-muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.1s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(0,0,0,0.02);
+    }
+
+    /* MAIN LAYOUT */
+
     main {
-      padding: 20px;
-      text-align: center;
+      flex: 1;
     }
-    /* Container for embedded module */
-    #module-container {
-      margin: 20px auto;
-      max-width: 1200px;
-      min-height: 500px;
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 3.5rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 3rem;
+      align-items: center;
+      padding-top: 1.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(46,94,107,0.08);
+      color: var(--color-primary-light);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3vw + 1.3rem, 2.9rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+
+    .hero p {
+      font-size: 0.98rem;
+      color: var(--color-muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .hero-panel {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 1.7rem 1.7rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      opacity: 0.05;
+      background: radial-gradient(circle at top right, #00bcd4 0, transparent 55%),
+                  radial-gradient(circle at bottom left, #10b981 0, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.03);
+      color: var(--color-muted);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .metric-caption {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+    }
+
+    /* FEATURES */
+
+    .section {
+      padding-top: 2.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--color-primary);
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      max-width: 26rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(46,94,107,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      color: var(--color-primary-light);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
+    /* STEPS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .step {
+      border-radius: var(--radius-lg);
+      background: white;
+      padding: 1rem 1.1rem;
+      border: 1px dashed rgba(0,0,0,0.07);
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--color-primary-light);
+      color: white;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .step-text {
+      font-size: 0.84rem;
+      color: var(--color-muted);
+    }
+
+    /* MODULE PLACEHOLDERS */
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .module-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(0,0,0,0.1);
+      padding: 1rem;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem;
+    }
+
+    .module-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .module-tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+    }
+
+    .module-placeholder {
+      flex: 1;
+      font-size: 0.82rem;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.4rem;
+    }
+
+    /* CLIENTS & FOOTER */
+
+    .clients-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .client-pill {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: white;
+    }
+
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      background: white;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.4rem 1.2rem 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        order: -1;
+      }
+
+      .cards,
+      .steps,
+      .modules-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+      }
+
+      .nav-menu {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        justify-content: space-between;
+      }
+
+      .nav-menu {
+        display: none; /* żeby nie robić hamburgera – po prostu znika na małych ekranach */
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero {
+        padding-top: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
+<div class="page">
   <header>
-    <h1>TEST MODUŁU1</h1>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">D</div>
+        <div class="logo-text">
+          <span>Datapolis</span>
+          <span>Workbox &amp; Digital Workers</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#platforma">Platforma</a>
+        <a href="#rozwiazania">Rozwiązania</a>
+        <a href="#moduly">Moduły</a>
+        <a href="#klienci">Klienci</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-ghost" type="button">Zaloguj</button>
+        <button class="btn btn-primary" type="button">Umów prezentację</button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <!-- Container for the embedded module -->
+    <section class="container hero" id="platforma">
+      <div>
+        <div class="hero-tag">
+          <span>Datapolis Workbox</span>
+        </div>
+        <h1>Uporządkuj procesy biznesowe w środowisku Microsoft 365.</h1>
+        <p>
+          Modeluj i automatyzuj procesy, twórz formularze i angażuj cyfrowych pracowników
+          Datapolis, którzy wykonują powtarzalne zadania za Twój zespół.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button">Umów prezentację online</button>
+          <button class="btn btn-ghost" type="button">Zobacz przykładowy moduł</button>
+        </div>
+        <div class="hero-meta">
+          <span><span class="dot"></span>Gotowe wdrożenia w środowisku Microsoft 365</span>
+          <span>Redukcja czasu obsługi spraw nawet o 40%</span>
+        </div>
+      </div>
 
+      <aside class="hero-panel">
+        <div class="hero-panel-header">
+          <div>
+            <div class="hero-panel-title">Widok menedżera</div>
+            <div class="metric-caption">Proces „Obsługa wniosku urlopowego”</div>
+          </div>
+          <div class="badge">Demo</div>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Aktywne wnioski</div>
+            <div class="metric-value">128</div>
+            <div class="metric-caption">w całej organizacji</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Średni czas decyzji</div>
+            <div class="metric-value">2,3 dnia</div>
+            <div class="metric-caption">-36% vs. poprzedni kwartał</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Zadania automatyczne</div>
+            <div class="metric-value">64%</div>
+            <div class="metric-caption">obsługiwane przez Digital Worker</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Poziom SLA</div>
+            <div class="metric-value">98%</div>
+            <div class="metric-caption">wniosków w terminie</div>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-<script src="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app/embed-module.js" data-datapolis-module="8ef50267-3ef0-4e4f-badd-beb42c2d46eb" data-base-url="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app" data-border-color="#374151" data-background-color="#1F2937" data-border-radius="8px" data-min-height="600px" data-show-header="true""></script>
-      
+    <!-- FEATURES -->
+    <section class="container section" id="rozwiazania">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Dlaczego Datapolis?</h2>
+          <p class="section-subtitle">
+            Łączymy klasyczne podejście do workflowów z możliwościami sztucznej inteligencji.
+            Biznes definiuje proces, a Datapolis Digital Workers zajmują się powtarzalną pracą.
+          </p>
+        </div>
+      </div>
 
-    
-    <!-- Embed script -->
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">⧉</div>
+          <h3 class="card-title">Modelowanie procesów</h3>
+          <p class="card-text">
+            Projektuj procesy w intuicyjnym diagramie – z czytelnymi stanami, akcjami i
+            rolami. Biznes rozumie, IT kontroluje.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⚙️</div>
+          <h3 class="card-title">Formularze biznesowe</h3>
+          <p class="card-text">
+            Twórz formularze osadzone w SharePoint, Teams lub jako samodzielne strony.
+            Jedna platforma, wiele scenariuszy.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🤖</div>
+          <h3 class="card-title">Digital Workers &amp; AI</h3>
+          <p class="card-text">
+            Cyfrowi pracownicy Datapolis czytają maile, klasyfikują zgłoszenia i
+            uruchamiają odpowiednie procesy – 24/7.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="container section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Jak wygląda wdrożenie?</h2>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">Warsztat procesowy</div>
+          <p class="step-text">
+            Wspólnie z zespołem biznesowym identyfikujemy 2–3 kluczowe procesy, które warto zautomatyzować w pierwszej kolejności.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">Model i formularze</div>
+          <p class="step-text">
+            Tworzymy model procesu w Datapolis Workbox, projektujemy formularze i konfigurujemy role oraz integracje.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Digital Worker &amp; optymalizacja</div>
+          <p class="step-text">
+            Dodajemy cyfrowych pracowników opartych o AI i mierzymy efekty. Kolejne procesy wdrażamy już szybciej, na gotowych wzorcach.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE PLACEHOLDERS -->
+    <section class="container section" id="moduly">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Moduły Datapolis</h2>
+          <p class="section-subtitle">
+            Każdy moduł to gotowe połączenie formularza, workflowu i cyfrowego pracownika.
+            Poniżej możesz osadzić swoje moduły bezpośrednio w stronie.
+          </p>
+        </div>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-box">
+          <div class="module-header">
+            <span class="module-title">Obsługa wniosków urlopowych</span>
+            <span class="module-tag">Embedded module</span>
+          </div>
+          <div id="module-container-1" class="module-placeholder">
+            Tutaj wkleisz skrypt z modułem, np.<br>
+            <code>&lt;script src=".../embed-module.js" data-container="module-container-1"&gt;&lt;/script&gt;</code>
+          </div>
+        </div>
+
+        <div class="module-box">
+          <div class="module-header">
+            <span class="module-title">Portal zgłoszeń IT / HR</span>
+            <span class="module-tag">Embedded module</span>
+          </div>
+          <div id="module-container-2" class="module-placeholder">
+            Drugi moduł – np. rejestr zgłoszeń serwisowych, ankiety, obieg dokumentów.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="container section" id="klienci">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Zaufali nam</h2>
+          <p class="section-subtitle">
+            Datapolis wspiera organizacje, które chcą uporządkować procesy i mieć pełną
+            kontrolę nad obiegiem spraw w środowisku Microsoft.
+          </p>
+        </div>
+      </div>
+
+      <div class="clients-row">
+        <span>Przykładowi klienci:</span>
+        <span class="client-pill">Sektor publiczny</span>
+        <span class="client-pill">Produkcja</span>
+        <span class="client-pill">Usługi finansowe</span>
+        <span class="client-pill">Energetyka</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="container section" id="kontakt">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Porozmawiajmy o Twoich procesach</h2>
+          <p class="section-subtitle">
+            Napisz kilka zdań o tym, jak dziś obsługujesz procesy – odezwiemy się z propozycją
+            krótkiej prezentacji live.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="max-width: 540px;">
+        <form>
+          <div style="display:grid; gap:0.7rem;">
+            <div>
+              <label for="name" style="font-size:0.8rem; font-weight:600;">Imię i nazwisko</label><br />
+              <input id="name" type="text" required
+                     style="width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.14); font-size:0.86rem;">
+            </div>
+            <div>
+              <label for="email" style="font-size:0.8rem; font-weight:600;">E-mail służbowy</label><br />
+              <input id="email" type="email" required
+                     style="width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.14); font-size:0.86rem;">
+            </div>
+            <div>
+              <label for="message" style="font-size:0.8rem; font-weight:600;">Kilka słów o procesach</label><br />
+              <textarea id="message" rows="4"
+                        style="width:100%; margin-top:0.2rem; padding:0.45rem 0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.14); font-size:0.86rem; resize:vertical;"></textarea>
+            </div>
+          </div>
+          <div style="margin-top:0.9rem; display:flex; justify-content:space-between; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+            <button class="btn btn-primary" type="submit">Wyślij zapytanie</button>
+            <span style="font-size:0.72rem; color:var(--color-muted);">
+              Ten formularz jest tylko przykładem – podepniesz tu własne API lub moduł Datapolis.
+            </span>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> Datapolis – Automatyzacja procesów biznesowych
+      </div>
+      <div class="footer-links">
+        <a href="#platforma">Platforma</a>
+        <a href="#rozwiazania">Rozwiązania</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // aktualny rok w stopce
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
