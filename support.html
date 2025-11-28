@@ -47,7 +47,7 @@
       flex-direction: column;
     }
 
-    /* NAV – identyczne jak w index, tylko linki kierują na index.html */
+    /* NAV – spójne z index.html */
 
     header {
       position: sticky;
@@ -215,7 +215,7 @@
       padding: 2.4rem 1.4rem 3.2rem;
     }
 
-    /* SUPPORT CONTENT */
+    /* CONTENT */
 
     .section-title {
       font-size: 1.8rem;
@@ -228,13 +228,6 @@
       color: var(--color-muted);
       max-width: 40rem;
       margin-bottom: 1.6rem;
-    }
-
-    .support-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2.2fr);
-      gap: 2rem;
-      align-items: flex-start;
     }
 
     .support-text p {
@@ -260,7 +253,9 @@
       border: 1px solid var(--color-border);
       padding: 1.2rem 1.3rem;
       box-shadow: var(--shadow-soft);
-      min-height: 220px;
+      min-height: 260px;
+      margin-top: 2rem;
+      width: 100%;
     }
 
     .support-module-header {
@@ -284,21 +279,17 @@
 
     .support-module-placeholder {
       margin-top: 0.4rem;
-      font-size: 0.82rem;
-      color: var(--color-muted);
       border-radius: var(--radius-md);
       border: 1px dashed rgba(148,163,184,0.6);
-      padding: 0.8rem;
-      min-height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      padding: 0;
+      min-height: 400px;   /* możesz dostosować */
+      width: 100%;
+      overflow: hidden;
     }
 
-    .support-module-placeholder code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.78rem;
+    #support-module-container {
+      width: 100%;
+      height: 100%;
     }
 
     /* FOOTER */
@@ -346,10 +337,6 @@
       .container {
         padding-inline: 1rem;
       }
-
-      .support-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
     }
   </style>
 </head>
@@ -389,31 +376,28 @@
         lub sprawdzić, na jakim etapie jest Twoja sprawa.
       </p>
 
-      <div class="support-layout">
-        <div class="support-text">
-          <p>
-            Portal supportowy pozwala śledzić wszystkie zgłoszenia dotyczące
-            wdrożenia i utrzymania Datapolis – od pierwszego kontaktu, przez
-            analizę, aż po rozwiązanie problemu i rekomendacje zmian w procesach.
-          </p>
-          <p>Za pomocą modułu poniżej możesz m.in.:</p>
-          <ul>
-            <li>złożyć nowe <strong>support case</strong>,</li>
-            <li>pobrać historię komunikacji w ramach danej sprawy,</li>
-            <li>sprawdzić aktualny etap obsługi i osobę odpowiedzialną,</li>
-            <li>przekazać dodatkowe informacje lub załączniki.</li>
-          </ul>
-        </div>
+      <div class="support-text">
+        <p>
+          Portal supportowy pozwala śledzić wszystkie zgłoszenia dotyczące
+          wdrożenia i utrzymania Datapolis – od pierwszego kontaktu, przez analizę,
+          aż po rozwiązanie problemu i rekomendacje zmian w procesach.
+        </p>
+        <p>Za pomocą modułu poniżej możesz m.in.:</p>
+        <ul>
+          <li>złożyć nowe <strong>support case</strong>,</li>
+          <li>pobrać historię komunikacji w ramach danej sprawy,</li>
+          <li>sprawdzić aktualny etap obsługi i osobę odpowiedzialną,</li>
+          <li>przekazać dodatkowe informacje lub załączniki.</li>
+        </ul>
+      </div>
 
-        <div class="support-module-card">
-          <div class="support-module-header">
-            <div class="support-module-title">Portal Support Datapolis</div>
-            <div class="support-module-tag">Embedded module</div>
-          </div>
-          <div id="support-module-container" class="support-module-placeholder">
-            <script src="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app/embed-module.js" data-datapolis-module="d87209a2-21b2-4fdc-99d4-dddd231605d1" data-base-url="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app" data-border-color="#374151" data-background-color="#1F2937" data-border-radius="8px" data-min-height="600px" data-show-header="true""></script>
-     
-          </div>
+      <div class="support-module-card">
+        <div class="support-module-header">
+          <div class="support-module-title">Portal Support Datapolis</div>
+          <div class="support-module-tag">Embedded module</div>
+        </div>
+        <div id="support-module-container" class="support-module-placeholder">
+          <!-- tutaj ładuje się osadzony moduł supportowy Datapolis -->
         </div>
       </div>
     </section>
@@ -439,5 +423,15 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
+<!-- Przyklad osadzenia modułu:
+<script
+  src="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app/embed-module.js"
+  data-datapolis-module="73278a69-7079-4cfd-a8f6-dea8bb910cc1"
+  data-base-url="https://collaboration-platform-git-workflowpb6-datapolis.vercel.app"
+  data-container="support-module-container">
+</script>
+-->
+
 </body>
 </html>
