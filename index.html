@@ -2,32 +2,29 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Datapolis – Procesy, AI i Cyfrowi Pracownicy</title>
+  <title>Datapolis 2to2 – Platforma pracy ludzi i agentów AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Datapolis – platforma do projektowania procesów biznesowych i pracy z cyfrowymi pracownikami (Digital Workers) wspieranymi przez AI." />
+  <meta name="description" content="Datapolis 2to2 – platforma do budowy aplikacji biznesowych: listy danych, formularze, workflowy stanowe, moduły stron i agenci AI." />
 
   <style>
     :root {
       --color-primary: #003642;
       --color-primary-soft: #2e5e6b;
       --color-accent: #16a085;
+
       --color-bg: #050816;
       --color-bg-soft: #0b1020;
       --color-card: #0f172a;
       --color-border: rgba(148, 163, 184, 0.35);
       --color-text: #e5e7eb;
       --color-muted: #9ca3af;
+
       --radius-lg: 18px;
       --radius-md: 12px;
       --shadow-soft: 0 24px 60px rgba(0,0,0,0.55);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top left, #1f2937 0, #020617 52%, #000 100%);
@@ -35,25 +32,12 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     /* NAV */
-
     header {
       position: sticky;
       top: 0;
@@ -66,7 +50,6 @@
       );
       border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     }
-
     .nav {
       max-width: 1140px;
       margin: 0 auto;
@@ -76,16 +59,10 @@
       justify-content: space-between;
       gap: 1rem;
     }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 12px;
       background:
         conic-gradient(from 160deg,
@@ -94,27 +71,21 @@
           #4c1d95,
           #16a085
         );
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       color: #f9fafb;
-      font-weight: 800;
-      font-size: 18px;
+      font-weight: 900;
+      font-size: 16px;
       box-shadow: 0 0 0 1px rgba(15,23,42,0.7), 0 16px 35px rgba(0,0,0,0.5);
+      letter-spacing: 0.02em;
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
+    .logo-text { display: flex; flex-direction: column; }
     .logo-text span:first-child {
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-size: 0.78rem;
     }
-
     .logo-text span:last-child {
       font-size: 0.72rem;
       color: var(--color-muted);
@@ -126,14 +97,12 @@
       gap: 1.3rem;
       font-size: 0.86rem;
     }
-
     .nav-menu a {
       color: var(--color-muted);
       font-weight: 500;
       white-space: nowrap;
       position: relative;
     }
-
     .nav-menu a::after {
       content: "";
       position: absolute;
@@ -145,20 +114,10 @@
       background: linear-gradient(90deg, #0ea5e9, #22c55e);
       transition: width 0.16s ease-out;
     }
+    .nav-menu a:hover { color: #e5e7eb; }
+    .nav-menu a:hover::after { width: 100%; }
 
-    .nav-menu a:hover {
-      color: #e5e7eb;
-    }
-
-    .nav-menu a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .nav-cta { display: flex; align-items: center; gap: 0.6rem; }
 
     .btn {
       border-radius: 999px;
@@ -179,35 +138,25 @@
         color 0.1s ease;
       white-space: nowrap;
     }
-
     .btn-primary {
       background: radial-gradient(circle at top left, #38bdf8 0, #16a085 45%, #0f172a 100%);
       color: #f9fafb;
       box-shadow: 0 14px 40px rgba(15,23,42,0.9);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 55px rgba(15,23,42,0.95);
-    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 55px rgba(15,23,42,0.95); }
 
     .btn-ghost {
       background: transparent;
       color: var(--color-muted);
       border-color: rgba(148,163,184,0.35);
     }
-
     .btn-ghost:hover {
       color: #e5e7eb;
       background: rgba(15,23,42,0.75);
     }
 
     /* MAIN LAYOUT */
-
-    main {
-      flex: 1;
-    }
-
+    main { flex: 1; }
     .container {
       max-width: 1140px;
       margin: 0 auto;
@@ -215,7 +164,6 @@
     }
 
     /* HERO */
-
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.8fr);
@@ -239,7 +187,6 @@
       color: var(--color-muted);
       margin-bottom: 0.85rem;
     }
-
     .hero-tag span:last-child {
       display: inline-flex;
       align-items: center;
@@ -253,26 +200,23 @@
       margin-bottom: 0.8rem;
       color: #f9fafb;
     }
-
     .hero-highlight {
       background: linear-gradient(120deg, #38bdf8, #22c55e, #a855f7);
       -webkit-background-clip: text;
       color: transparent;
     }
-
     .hero p {
       font-size: 0.98rem;
       color: var(--color-muted);
       max-width: 34rem;
       margin-bottom: 1.5rem;
     }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.1rem;
     }
 
     .hero-meta {
@@ -282,12 +226,7 @@
       font-size: 0.78rem;
       color: var(--color-muted);
     }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
 
     .dot {
       width: 7px;
@@ -310,7 +249,6 @@
       overflow: hidden;
       isolation: isolate;
     }
-
     .hero-panel::after {
       content: "";
       position: absolute;
@@ -322,11 +260,7 @@
       mix-blend-mode: screen;
       pointer-events: none;
     }
-
-    .hero-panel-inner {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-panel-inner { position: relative; z-index: 1; }
 
     .hero-panel-header {
       display: flex;
@@ -334,17 +268,8 @@
       align-items: center;
       margin-bottom: 1.1rem;
     }
-
-    .hero-panel-title {
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .hero-panel-caption {
-      font-size: 0.75rem;
-      color: #cbd5f5;
-    }
+    .hero-panel-title { font-size: 0.86rem; font-weight: 700; color: #e5e7eb; }
+    .hero-panel-caption { font-size: 0.75rem; color: #cbd5f5; }
 
     .badge {
       padding: 0.22rem 0.7rem;
@@ -363,7 +288,6 @@
       gap: 0.9rem;
       margin-bottom: 1.1rem;
     }
-
     .metric {
       border-radius: 14px;
       padding: 0.8rem 0.85rem;
@@ -371,23 +295,9 @@
       border: 1px solid rgba(148,163,184,0.4);
       backdrop-filter: blur(10px);
     }
-
-    .metric-label {
-      font-size: 0.7rem;
-      color: #cbd5e1;
-      margin-bottom: 0.12rem;
-    }
-
-    .metric-value {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #e5e7eb;
-    }
-
-    .metric-caption {
-      font-size: 0.72rem;
-      color: #9ca3af;
-    }
+    .metric-label { font-size: 0.7rem; color: #cbd5e1; margin-bottom: 0.12rem; }
+    .metric-value { font-size: 1.18rem; font-weight: 800; color: #e5e7eb; letter-spacing: 0.01em; }
+    .metric-caption { font-size: 0.72rem; color: #9ca3af; }
 
     .timeline {
       margin-top: 0.4rem;
@@ -397,21 +307,15 @@
       overflow: hidden;
       border: 1px solid rgba(148,163,184,0.4);
     }
-
     .timeline-fill {
       height: 100%;
-      width: 72%;
+      width: 74%;
       border-radius: 999px;
       background: linear-gradient(90deg, #22c55e, #38bdf8);
     }
 
     /* SECTIONS */
-
-    .section {
-      padding-top: 2.8rem;
-      padding-bottom: 2rem;
-    }
-
+    .section { padding-top: 2.8rem; padding-bottom: 2rem; }
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -419,18 +323,8 @@
       gap: 1.6rem;
       margin-bottom: 1.8rem;
     }
-
-    .section-title {
-      font-size: 1.4rem;
-      color: #f9fafb;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      max-width: 30rem;
-    }
-
+    .section-title { font-size: 1.4rem; color: #f9fafb; }
+    .section-subtitle { font-size: 0.9rem; color: var(--color-muted); max-width: 32rem; }
     .section-kicker {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
@@ -438,27 +332,15 @@
       color: var(--color-muted);
       margin-bottom: 0.2rem;
     }
-
-    .section-cta {
-      font-size: 0.82rem;
-      color: var(--color-muted);
-    }
-
-    .section-cta a {
-      color: #38bdf8;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-    }
+    .section-cta { font-size: 0.82rem; color: var(--color-muted); }
+    .section-cta a { color: #38bdf8; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
     /* CARDS */
-
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.3rem;
     }
-
     .card {
       background: radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 55%),
                   radial-gradient(circle at bottom right, rgba(34,197,94,0.16), transparent 55%),
@@ -468,7 +350,6 @@
       border: 1px solid var(--color-border);
       box-shadow: 0 18px 45px rgba(15,23,42,0.85);
     }
-
     .card-icon {
       width: 30px;
       height: 30px;
@@ -482,103 +363,57 @@
       margin-bottom: 0.7rem;
       box-shadow: 0 12px 25px rgba(0,0,0,0.75);
     }
+    .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; color: #f9fafb; }
+    .card-text { font-size: 0.86rem; color: var(--color-muted); }
 
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: #f9fafb;
-    }
-
-    .card-text {
-      font-size: 0.86rem;
-      color: var(--color-muted);
-    }
-
-    /* 3-STEP STRIP */
-
+    /* STRIP */
     .steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
     }
-
     .step {
       background: rgba(15,23,42,0.85);
       border-radius: var(--radius-md);
       border: 1px solid rgba(148,163,184,0.4);
       padding: 0.9rem 1rem;
     }
-
     .step-number {
       width: 22px;
       height: 22px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 0, #38bdf8, #22c55e);
       color: #0f172a;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.78rem;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 0.45rem;
     }
+    .step-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; color: #e5e7eb; }
+    .step-text { font-size: 0.82rem; color: var(--color-muted); }
 
-    .step-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-      color: #e5e7eb;
-    }
-
-    .step-text {
-      font-size: 0.82rem;
-      color: var(--color-muted);
-    }
-
-    /* DIGITAL WORKERS SECTION */
-
+    /* AGENTS SECTION */
     .dw-layout {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
       gap: 2rem;
     }
-
-    .dw-list {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .dw-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-    }
-
+    .dw-list { display: grid; gap: 0.9rem; }
+    .dw-item { display: flex; align-items: flex-start; gap: 0.8rem; }
     .dw-avatar {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 0, #38bdf8, #22c55e);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.92rem;
+      font-weight: 800;
       color: #020617;
       flex-shrink: 0;
     }
-
-    .dw-item-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .dw-item-text {
-      font-size: 0.82rem;
-      color: var(--color-muted);
-    }
+    .dw-item-title { font-size: 0.92rem; font-weight: 800; color: #e5e7eb; }
+    .dw-item-text { font-size: 0.82rem; color: var(--color-muted); }
 
     .dw-panel {
       border-radius: var(--radius-lg);
@@ -589,46 +424,24 @@
       padding: 1.2rem 1.3rem;
       box-shadow: 0 20px 50px rgba(15,23,42,0.9);
     }
-
-    .dw-panel-header {
-      font-size: 0.82rem;
-      color: var(--color-muted);
-      margin-bottom: 0.6rem;
-    }
+    .dw-panel-header { font-size: 0.82rem; color: var(--color-muted); margin-bottom: 0.6rem; }
 
     .dw-log {
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 0.78rem;
       background: rgba(15,23,42,0.96);
       border-radius: 10px;
       padding: 0.8rem 0.7rem;
       border: 1px solid rgba(148,163,184,0.5);
-      max-height: 220px;
+      max-height: 240px;
       overflow: auto;
     }
-
-    .dw-log-line {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 0.15rem;
-      align-items: baseline;
-    }
-
-    .dw-log-time {
-      color: #6b7280;
-      flex-shrink: 0;
-    }
-
-    .dw-log-msg {
-      color: #e5e7eb;
-    }
-
-    .dw-log-msg span {
-      color: #22c55e;
-    }
+    .dw-log-line { display: flex; gap: 0.4rem; margin-bottom: 0.15rem; align-items: baseline; }
+    .dw-log-time { color: #6b7280; flex-shrink: 0; }
+    .dw-log-msg { color: #e5e7eb; }
+    .dw-log-msg span { color: #22c55e; }
 
     /* CLIENTS ROW */
-
     .clients-row {
       display: flex;
       flex-wrap: wrap;
@@ -637,7 +450,6 @@
       font-size: 0.8rem;
       color: var(--color-muted);
     }
-
     .client-pill {
       padding: 0.36rem 0.9rem;
       border-radius: 999px;
@@ -647,13 +459,11 @@
     }
 
     /* CONTACT */
-
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 2.4fr) minmax(0, 2.2fr);
       gap: 2rem;
     }
-
     .contact-form-card {
       background: rgba(15,23,42,0.96);
       border-radius: var(--radius-lg);
@@ -662,15 +472,8 @@
       box-shadow: var(--shadow-soft);
       max-width: 520px;
     }
-
-    label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    input,
-    textarea {
+    label { font-size: 0.78rem; font-weight: 700; color: #e5e7eb; }
+    input, textarea {
       width: 100%;
       margin-top: 0.22rem;
       padding: 0.5rem 0.65rem;
@@ -681,23 +484,12 @@
       font-size: 0.84rem;
       outline: none;
     }
-
-    input:focus,
-    textarea:focus {
+    input:focus, textarea:focus {
       border-color: #38bdf8;
       box-shadow: 0 0 0 1px rgba(56,189,248,0.55);
     }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .form-grid {
-      display: grid;
-      gap: 0.7rem;
-    }
-
+    textarea { resize: vertical; min-height: 110px; }
+    .form-grid { display: grid; gap: 0.7rem; }
     .form-footer {
       margin-top: 0.9rem;
       display: flex;
@@ -706,32 +498,16 @@
       gap: 0.7rem;
       flex-wrap: wrap;
     }
-
-    .form-note {
-      font-size: 0.73rem;
-      color: var(--color-muted);
-    }
-
-    .contact-details {
-      font-size: 0.86rem;
-      color: var(--color-muted);
-    }
-
-    .contact-details strong {
-      color: #e5e7eb;
-    }
-
-    .contact-details p + p {
-      margin-top: 0.5rem;
-    }
+    .form-note { font-size: 0.73rem; color: var(--color-muted); }
+    .contact-details { font-size: 0.86rem; color: var(--color-muted); }
+    .contact-details strong { color: #e5e7eb; }
+    .contact-details p + p { margin-top: 0.5rem; }
 
     /* FOOTER */
-
     footer {
       border-top: 1px solid rgba(148,163,184,0.25);
       background: rgba(2,6,23,0.98);
     }
-
     .footer-inner {
       max-width: 1140px;
       margin: 0 auto;
@@ -743,91 +519,51 @@
       font-size: 0.8rem;
       color: var(--color-muted);
     }
-
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .footer-links a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
     /* RESPONSIVE */
-
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-panel {
-        order: -1;
-      }
-
-      .cards,
-      .steps,
-      .dw-layout,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .hero-panel { order: -1; }
+      .cards, .steps, .dw-layout, .contact-grid { grid-template-columns: minmax(0, 1fr); }
     }
-
     @media (max-width: 760px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .nav {
-        padding-inline: 1rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero {
-        padding-top: 1.4rem;
-      }
+      .nav-menu { display: none; }
+      .nav { padding-inline: 1rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero { padding-top: 1.4rem; }
     }
-
     @media (max-width: 520px) {
-      .container {
-        padding-inline: 1rem;
-      }
-
-      .cards {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .container { padding-inline: 1rem; }
+      .cards { grid-template-columns: minmax(0, 1fr); }
     }
   </style>
 </head>
+
 <body>
 <div class="page">
   <header>
     <div class="nav">
       <div class="nav-left">
-        <div class="logo-mark">D</div>
+        <div class="logo-mark">2↔2</div>
         <div class="logo-text">
-          <span>DATAPOLIS</span>
-          <span>Process Automation &amp; AI</span>
+          <span>DATAPOLIS 2TO2</span>
+          <span>Work, connected</span>
         </div>
       </div>
 
-<nav class="nav-menu">
-  <a href="#platforma">Platforma</a>
-  <a href="#ai-workers">Digital Workers</a>
-  <a href="#procesy">Procesy</a>
-  <a href="#klienci">Klienci</a>
-  <a href="support.html">Support</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
+      <nav class="nav-menu">
+        <a href="#platforma">Platforma</a>
+        <a href="#klocki">Klocki</a>
+        <a href="#agenci">Agenci</a>
+        <a href="#zastosowania">Zastosowania</a>
+        <a href="support.html">Support</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
 
       <div class="nav-cta">
-        <button class="btn btn-ghost" type="button">Demo na żywo</button>
+        <button class="btn btn-ghost" type="button">Zobacz demo</button>
         <button class="btn btn-primary" type="button">Umów prezentację</button>
       </div>
     </div>
@@ -838,63 +574,64 @@
     <section class="container hero" id="platforma">
       <div>
         <div class="hero-tag">
-          <span>Datapolis Platform</span>
-          <span><span class="dot"></span>AI-driven processes</span>
+          <span>Datapolis 2to2</span>
+          <span><span class="dot"></span>Work, connected</span>
         </div>
 
         <h1>
-          Projektuj procesy, a
-          <span class="hero-highlight">cyfrowi pracownicy</span>
-          wykonają resztę.
+          Buduj aplikacje pracy:
+          <span class="hero-highlight">dane, formularze, procesy</span>
+          i agenty AI — razem.
         </h1>
 
         <p>
-          Datapolis łączy modelowanie procesów, automatyzację i sztuczną inteligencję.
-          Biznes opisuje, jak ma wyglądać praca – nasi Digital Workers czytają zgłoszenia,
-          klasyfikują zadania i uruchamiają odpowiednie kroki procesu.
+          2to2 to platforma do tworzenia wewnętrznych „mini-systemów” dla firmy:
+          listy danych, formularze, workflowy stanowe i moduły stron. Ludzie wykonują
+          decyzje, agenty AI robią resztę tam, gdzie to ma sens — bez chaosu i bez przepisywania
+          tych samych rzeczy w pięciu narzędziach.
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" type="button">Zobacz proces w działaniu</button>
-          <button class="btn btn-ghost" type="button">Porozmawiajmy o Twoich procesach</button>
+          <button class="btn btn-primary" type="button">Pokaż 2to2 w działaniu</button>
+          <button class="btn btn-ghost" type="button">Porozmawiajmy o Twoim case</button>
         </div>
 
         <div class="hero-meta">
-          <span><span class="dot"></span>Automatyzacja obsługi zgłoszeń, wniosków i dokumentów</span>
-          <span>Cyfrowi pracownicy uczą się na Twoich danych</span>
+          <span><span class="dot"></span>Jeden model: dane + UI + proces + rola + agent</span>
+          <span>Prosto zacząć, łatwo skalować</span>
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Podgląd pulpitu Datapolis">
+      <aside class="hero-panel" aria-label="Podgląd pulpitu Datapolis 2to2">
         <div class="hero-panel-inner">
           <div class="hero-panel-header">
             <div>
-              <div class="hero-panel-title">Pulpit procesów</div>
-              <div class="hero-panel-caption">Digital Worker – „Support Bot”</div>
+              <div class="hero-panel-title">Pulpit 2to2</div>
+              <div class="hero-panel-caption">Workspace: „Back-office”</div>
             </div>
-            <div class="badge">Live stream</div>
+            <div class="badge">Live</div>
           </div>
 
           <div class="metrics-grid">
             <div class="metric">
-              <div class="metric-label">Nowe zgłoszenia dzisiaj</div>
-              <div class="metric-value">312</div>
-              <div class="metric-caption">42% obsłużonych automatycznie</div>
+              <div class="metric-label">Nowe sprawy dzisiaj</div>
+              <div class="metric-value">248</div>
+              <div class="metric-caption">z formularzy, maili i modułów</div>
             </div>
             <div class="metric">
-              <div class="metric-label">Średni czas reakcji</div>
-              <div class="metric-value">37 s</div>
-              <div class="metric-caption">pierwsza odpowiedź do klienta</div>
+              <div class="metric-label">Automatyzacje (AI)</div>
+              <div class="metric-value">46%</div>
+              <div class="metric-caption">wstępna klasyfikacja i dane</div>
             </div>
             <div class="metric">
               <div class="metric-label">Procesy w toku</div>
-              <div class="metric-value">89</div>
-              <div class="metric-caption">z priorytetem wysokim</div>
+              <div class="metric-value">73</div>
+              <div class="metric-caption">z kontrolą SLA</div>
             </div>
             <div class="metric">
-              <div class="metric-label">Oszczędność czasu</div>
-              <div class="metric-value">+58%</div>
-              <div class="metric-caption">vs. obsługa w 100% ręczna</div>
+              <div class="metric-label">Czas do decyzji</div>
+              <div class="metric-value">1:18</div>
+              <div class="metric-caption">średnio (min:s)</div>
             </div>
           </div>
 
@@ -905,102 +642,121 @@
       </aside>
     </section>
 
-    <!-- WARTOŚĆ / CECHY -->
-    <section class="container section" id="procesy">
+    <!-- VALUE / PLATFORM -->
+    <section class="container section" id="klocki">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Procesy, nie tylko formularze</div>
-          <h2 class="section-title">Jedna platforma do orkiestracji pracy w całej firmie.</h2>
+          <div class="section-kicker">Platforma, nie zestaw narzędzi</div>
+          <h2 class="section-title">Pięć klocków. Jedna spójna praca.</h2>
           <p class="section-subtitle">
-            Zamiast wielu rozproszonych narzędzi dostajesz wspólny model procesów.
-            Każda sprawa – wniosek, zamówienie, zgłoszenie – ma swój jasny przebieg,
-            a AI pomaga podjąć właściwe decyzje szybciej.
+            W 2to2 nie „integrujesz wszystkiego ze wszystkim”. Budujesz rozwiązanie w jednym miejscu:
+            dane, formularze, workflow, moduły stron i agenci AI są częścią tego samego modelu.
           </p>
         </div>
         <div class="section-cta">
-          Szukasz konkretnego scenariusza (HR, obsługa klienta, back-office)?
-          <br />Zbudujemy go razem w oparciu o Twój język procesów.
+          Chcesz wejść szybko?
+          <br />Zaczynamy od jednego procesu i jednej listy danych — reszta dochodzi naturalnie.
         </div>
       </div>
 
       <div class="cards">
         <article class="card">
-          <div class="card-icon">⧉</div>
-          <h3 class="card-title">Graficzne modelowanie procesów</h3>
+          <div class="card-icon">≋</div>
+          <h3 class="card-title">Listy (dane)</h3>
           <p class="card-text">
-            Stany, akcje, role – wszystko na jednym diagramie. Biznes widzi, jak przebiega
-            proces, a zespół techniczny dostaje dokładną specyfikację wykonania.
+            Twoje rekordy, relacje, statusy i historia zmian. Jedno źródło prawdy dla ludzi, agentów i procesów.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⌗</div>
+          <h3 class="card-title">Formularze</h3>
+          <p class="card-text">
+            Szybkie tworzenie UI do wniosków, zgłoszeń i edycji danych. Z kontrolą pól per rola i per etap.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">▣</div>
+          <h3 class="card-title">Workflowy stanowe</h3>
+          <p class="card-text">
+            Praca dzieje się w stanach. Każdy etap ma role, akcje, reguły i automatyzacje — czytelnie i bez magii.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">▦</div>
+          <h3 class="card-title">Moduły i strony</h3>
+          <p class="card-text">
+            Składasz ekrany z komponentów: listy, formularze, dashboardy, widoki spraw, portale dla zespołów.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">✦</div>
+          <h3 class="card-title">Uprawnienia i role</h3>
+          <p class="card-text">
+            Jedno podejście do bezpieczeństwa: kto widzi co, kto może edytować i kto może wykonać akcję w procesie.
           </p>
         </article>
 
         <article class="card">
           <div class="card-icon">🤖</div>
-          <h3 class="card-title">AI w roli cyfrowego pracownika</h3>
+          <h3 class="card-title">Agenci AI</h3>
           <p class="card-text">
-            Digital Worker czyta treść zgłoszeń, klasyfikuje je, wyciąga dane i
-            podejmuje pierwsze decyzje. Człowiek wchodzi tam, gdzie liczy się kontekst
-            biznesowy.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">📊</div>
-          <h3 class="card-title">Pełna widoczność przepływu pracy</h3>
-          <p class="card-text">
-            Widzisz, gdzie proces się zatrzymuje, który etap zabiera najwięcej czasu
-            i ile pracy realnie wykonuje AI. Dane do decyzji, nie tylko ładne raporty.
+            Agent nie „gada”. Agent wykonuje pracę: czyta, wyciąga dane, proponuje decyzję, uruchamia akcję procesu.
           </p>
         </article>
       </div>
     </section>
 
-    <!-- JAK TO DZIAŁA -->
+    <!-- HOW IT WORKS -->
     <section class="container section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Jak pracuje Datapolis</div>
-          <h2 class="section-title">Od opisu procesu do działającej orkiestracji.</h2>
+          <div class="section-kicker">Jak to wdrażać</div>
+          <h2 class="section-title">Najpierw działający fragment. Potem rozbudowa.</h2>
+          <p class="section-subtitle">
+            W praktyce to zawsze jest: jedna lista danych + jeden formularz + jeden proces + jeden moduł strony.
+            I dopiero potem dokładamy agentów AI i kolejne ścieżki.
+          </p>
         </div>
       </div>
 
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
-          <div class="step-title">Opisujesz, jak ma działać proces</div>
+          <div class="step-title">Definiujesz „sprawę”</div>
           <p class="step-text">
-            Zaczynamy od prostego opisu: kto inicjuje sprawę, jakie decyzje podejmuje
-            biznes, kiedy uznajemy sprawę za zamkniętą. Bez technicznego żargonu.
+            Co jest rekordem? Jakie ma dane? Kto z tym pracuje? Jak wygląda start i „done”? Krótko, po ludzku.
           </p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <div class="step-title">Budujemy model i konfigurujemy AI</div>
+          <div class="step-title">Składasz ekran i proces</div>
           <p class="step-text">
-            Zamieniamy opis na diagram procesu, formularze i reguły. Digital Worker
-            uczy się na Twoich przykładach: mailach, zgłoszeniach, dokumentach.
+            Formularz + moduł strony + workflow stanowy. Role, akcje, walidacje i to, co ma się dziać automatycznie.
           </p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <div class="step-title">Start pilota i skalowanie</div>
+          <div class="step-title">Dodajesz agentów tam, gdzie to boli</div>
           <p class="step-text">
-            Wdrażamy proces dla wybranego zespołu, mierzymy efekty i przesuwamy kolejne
-            zadania z ludzi na AI. Wszystko w jednym, spójnym systemie.
+            Agent bierze „brudną robotę”: czytanie treści, ekstrakcję danych, klasyfikację i propozycje decyzji.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- DIGITAL WORKERS -->
-    <section class="container section" id="ai-workers">
+    <!-- AGENTS -->
+    <section class="container section" id="agenci">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Digital Workers</div>
-          <h2 class="section-title">Cyfrowi pracownicy, którzy znają Twoje procesy.</h2>
+          <div class="section-kicker">Agenci</div>
+          <h2 class="section-title">Agenci AI, którzy znają kontekst procesu.</h2>
           <p class="section-subtitle">
-            To nie jest kolejny chatbot. Digital Worker rozumie kontekst procesu:
-            wie, na jakim etapie jest sprawa, jakie dane już posiada i jakie akcje
-            może wykonać samodzielnie.
+            Agent w 2to2 działa w ramach reguł: ma role, uprawnienia i konkretne akcje procesu. To daje kontrolę.
+            AI pomaga — ale nie robi samowolki.
           </p>
         </div>
       </div>
@@ -1008,104 +764,99 @@
       <div class="dw-layout">
         <div class="dw-list">
           <div class="dw-item">
-            <div class="dw-avatar">S1</div>
+            <div class="dw-avatar">IN</div>
             <div>
-              <div class="dw-item-title">„Support Worker” – pierwszy kontakt ze zgłoszeniem</div>
+              <div class="dw-item-title">Intake Agent — porządkuje wejście</div>
               <p class="dw-item-text">
-                Czyta treść e-maili i formularzy, wyciąga temat, priorytet i klienta.
-                Zakłada sprawę w procesie, proponuje kategorię i podpowiada operatorowi
-                gotową odpowiedź.
+                Czyta zgłoszenia i formularze, rozpoznaje typ sprawy, wyciąga dane do listy, nadaje priorytet,
+                proponuje ścieżkę procesu.
               </p>
             </div>
           </div>
 
           <div class="dw-item">
-            <div class="dw-avatar">HR</div>
+            <div class="dw-avatar">QA</div>
             <div>
-              <div class="dw-item-title">„HR Worker” – wnioski, zmiany i onboardingi</div>
+              <div class="dw-item-title">Quality Agent — pilnuje jakości danych</div>
               <p class="dw-item-text">
-                Spina wnioski urlopowe, zmiany danych i sprzęt dla nowych pracowników
-                w jeden przepływ. Pilnuje, żeby każdy krok procesu został wykonany.
+                Wykrywa braki, sprzeczności i niekompletne pola. Zatrzymuje proces tam, gdzie grozi błąd —
+                i podpowiada, co poprawić.
               </p>
             </div>
           </div>
 
           <div class="dw-item">
-            <div class="dw-avatar">FIN</div>
+            <div class="dw-avatar">EX</div>
             <div>
-              <div class="dw-item-title">„Finance Worker” – dokumenty i akceptacje kosztów</div>
+              <div class="dw-item-title">Executor Agent — robi kroki rutynowe</div>
               <p class="dw-item-text">
-                Odczytuje dane z dokumentów kosztowych, sprawdza zgodność z budżetem
-                i kieruje sprawę do właściwych decydentów. Informuje, gdy coś wymaga
-                uwagi człowieka.
+                Uruchamia akcje procesu: powiadomienia, przypisania, przygotowanie odpowiedzi, aktualizacje rekordów.
+                Człowiek zatwierdza tam, gdzie jest ryzyko.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="dw-panel" aria-label="Przykładowy dziennik pracy Digital Workera">
-          <div class="dw-panel-header">
-            Dziennik pracy – Digital Worker „Support”
-          </div>
+        <div class="dw-panel" aria-label="Przykładowy dziennik pracy agenta">
+          <div class="dw-panel-header">Dziennik pracy — Intake Agent</div>
           <div class="dw-log">
             <div class="dw-log-line">
-              <span class="dw-log-time">08:14:03</span>
-              <span class="dw-log-msg">Odebrano e-mail: <span>[Temat: „Faktura nie została zaksięgowana”]</span></span>
+              <span class="dw-log-time">09:02:11</span>
+              <span class="dw-log-msg">Odebrano zgłoszenie: <span>[„Prośba o dostęp do narzędzia”]</span></span>
             </div>
             <div class="dw-log-line">
-              <span class="dw-log-time">08:14:07</span>
-              <span class="dw-log-msg">Wykryto typ sprawy: <span>„Reklamacja płatności”</span>, priorytet: <span>Wysoki</span></span>
+              <span class="dw-log-time">09:02:15</span>
+              <span class="dw-log-msg">Wydobyto dane: <span>użytkownik, dział, system</span> → zapis do listy „Access Requests”</span>
             </div>
             <div class="dw-log-line">
-              <span class="dw-log-time">08:14:12</span>
-              <span class="dw-log-msg">Utworzono instancję procesu <span>#RC-2025-184</span> i przypisano do zespołu „Finance”</span>
+              <span class="dw-log-time">09:02:19</span>
+              <span class="dw-log-msg">Klasyfikacja: <span>„IT / Access”</span>, priorytet: <span>Normal</span></span>
             </div>
             <div class="dw-log-line">
-              <span class="dw-log-time">08:14:16</span>
-              <span class="dw-log-msg">Wygenerowano odpowiedź dla klienta – oczekuje akceptacji operatora</span>
+              <span class="dw-log-time">09:02:23</span>
+              <span class="dw-log-msg">Start procesu: <span>#AR-2026-041</span> → stan: <span>„Weryfikacja”</span></span>
             </div>
             <div class="dw-log-line">
-              <span class="dw-log-time">08:15:02</span>
-              <span class="dw-log-msg">Operator zaakceptował odpowiedź. <span>Sprawa zamknięta na 1. etapie.</span></span>
+              <span class="dw-log-time">09:02:31</span>
+              <span class="dw-log-msg">Propozycja akcji: <span>„Zatwierdź dostęp”</span> → oczekuje akceptacji roli „Team Lead”</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- KLIENCI -->
-    <section class="container section" id="klienci">
+    <!-- USE CASES -->
+    <section class="container section" id="zastosowania">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Zaufanie</div>
-          <h2 class="section-title">Platforma dla firm, które poważnie traktują procesy.</h2>
+          <div class="section-kicker">Zastosowania</div>
+          <h2 class="section-title">Tam, gdzie dziś ginie czas i odpowiedzialność.</h2>
           <p class="section-subtitle">
-            Datapolis od lat wspiera organizacje z branż: przemysł, energetyka, media,
-            usługi profesjonalne i sektor publiczny. Nowa generacja platformy
-            rozszerza to doświadczenie o AI i cyfrowych pracowników.
+            2to2 najlepiej działa w sprawach „między działami”: ktoś inicjuje, ktoś zatwierdza, ktoś realizuje,
+            a na końcu ma być ślad i porządek.
           </p>
         </div>
       </div>
 
       <div class="clients-row">
-        <span>Przykładowe profile klientów:</span>
-        <span class="client-pill">Centra obsługi klienta</span>
-        <span class="client-pill">Działy HR i back-office</span>
-        <span class="client-pill">Finanse i kontroling</span>
-        <span class="client-pill">Sektor publiczny</span>
+        <span>Typowe scenariusze:</span>
+        <span class="client-pill">Onboarding i offboarding</span>
+        <span class="client-pill">Zgłoszenia IT i dostępów</span>
+        <span class="client-pill">Obieg wniosków i akceptacji</span>
+        <span class="client-pill">Back-office i dokumenty</span>
+        <span class="client-pill">Portale zespołów (moduły)</span>
       </div>
     </section>
 
-    <!-- KONTAKT -->
+    <!-- CONTACT -->
     <section class="container section" id="kontakt">
       <div class="section-header">
         <div>
           <div class="section-kicker">Kontakt</div>
-          <h2 class="section-title">Porozmawiajmy, od jakiego procesu zacząć.</h2>
+          <h2 class="section-title">Zróbmy pilot na jednym procesie.</h2>
           <p class="section-subtitle">
-            Napisz kilka zdań o tym, gdzie dziś tracicie najwięcej czasu. W odpowiedzi
-            zaproponujemy 30-minutową rozmowę z krótką prezentacją Digital Workers
-            na żywym procesie.
+            Opisz krótko, co dziś u Was „utknęło”. Zaproponujemy prosty pilot:
+            lista danych + formularz + workflow + moduł strony — i dołożymy agenta tam, gdzie realnie pomoże.
           </p>
         </div>
       </div>
@@ -1127,22 +878,20 @@
                 <input id="company" type="text" autocomplete="organization" />
               </div>
               <div>
-                <label for="message">Jakie procesy chcesz usprawnić?</label><br />
-                <textarea id="message" rows="4" placeholder="Np. obsługa zgłoszeń klientów, obieg wniosków HR, procesy back-office..."></textarea>
+                <label for="message">Jaki proces chcesz uporządkować?</label><br />
+                <textarea id="message" rows="4" placeholder="Np. wnioski urlopowe, onboardingi, dostęp do systemów, obieg dokumentów..."></textarea>
               </div>
             </div>
             <div class="form-footer">
-              <button class="btn btn-primary" type="submit">Wyślij wiadomość</button>
-              <div class="form-note">
-                Formularz demonstracyjny – podepniesz tu własny backend lub moduł Datapolis.
-              </div>
+              <button class="btn btn-primary" type="submit">Wyślij</button>
+              <div class="form-note">Formularz demonstracyjny — podepniesz tu swój backend / moduł 2to2.</div>
             </div>
           </form>
         </div>
 
         <div class="contact-details">
-          <p><strong>Datapolis</strong><br/>
-            Platforma do automatyzacji procesów biznesowych i pracy z cyfrowymi pracownikami (AI).</p>
+          <p><strong>Datapolis 2to2</strong><br/>
+            Platforma pracy: listy danych, formularze, workflowy stanowe, moduły stron i agenci AI.</p>
           <p><strong>E-mail:</strong> <a href="mailto:office@datapolis.com">office@datapolis.com</a><br/>
              <strong>Telefon:</strong> +48 601 33 20 56</p>
           <p><strong>Adres:</strong><br/>
@@ -1155,23 +904,20 @@
 
   <footer>
     <div class="footer-inner">
-      <div>
-        © <span id="year"></span> Datapolis. Wszystkie prawa zastrzeżone.
+      <div>© <span id="year"></span> Datapolis. Wszystkie prawa zastrzeżone.</div>
+      <div class="footer-links">
+        <a href="#platforma">Platforma</a>
+        <a href="#klocki">Klocki</a>
+        <a href="#agenci">Agenci</a>
+        <a href="#zastosowania">Zastosowania</a>
+        <a href="support.html">Support</a>
+        <a href="#kontakt">Kontakt</a>
       </div>
-<div class="footer-links">
-  <a href="#platforma">Platforma</a>
-  <a href="#ai-workers">Digital Workers</a>
-  <a href="#procesy">Procesy</a>
-  <a href="#klienci">Klienci</a>
-  <a href="support.html">Support</a>
-  <a href="#kontakt">Kontakt</a>
-</div>
     </div>
   </footer>
 </div>
 
 <script>
-  // aktualny rok
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
