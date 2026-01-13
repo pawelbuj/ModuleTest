@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Datapolis 2to2 – Two partners. Two worlds. One flow.</title>
+  <title>Datapolis 2to2 – Build apps. Run workflows. Control AI.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Datapolis 2to2 – People and Digital Workers run structured processes together." />
+  <meta name="description" content="Datapolis 2to2 – Build workflow apps fast, embed them anywhere, and run people + AI agents inside controlled processes." />
 
   <style>
     :root{
       --brand-1:#003642;
       --brand-2:#2e5e6b;
 
-      --bg1:#1f2937;
+      --bg1:#0b1220;
       --bg2:#020617;
       --card:#0f172a;
-      --card2:rgba(15,23,42,.86);
-      --border:rgba(148,163,184,.35);
+      --border:rgba(148,163,184,.30);
       --text:#e5e7eb;
       --muted:#9ca3af;
 
-      --shadow:0 24px 60px rgba(0,0,0,.55);
+      --shadow:0 26px 70px rgba(0,0,0,.58);
+      --r-xl:26px;
       --r-lg:18px;
       --r-md:12px;
 
@@ -33,19 +33,25 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top left,var(--bg1) 0,var(--bg2) 52%,#000 100%);
+      background:
+        radial-gradient(circle at 18% 10%, rgba(56,189,248,.12) 0, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(34,197,94,.10) 0, transparent 45%),
+        radial-gradient(circle at 40% 110%, rgba(168,85,247,.10) 0, transparent 52%),
+        radial-gradient(circle at top left, var(--bg1) 0, var(--bg2) 55%, #000 110%);
       color:var(--text);
       line-height:1.6;
       -webkit-font-smoothing:antialiased;
     }
     a{color:inherit;text-decoration:none}
-    .page{min-height:100vh;display:flex;flex-direction:column}
     img{max-width:100%;display:block}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    main{flex:1}
 
+    /* NAV */
     header{
       position:sticky;top:0;z-index:40;
       backdrop-filter:blur(18px);
-      background:linear-gradient(to bottom,rgba(2,6,23,.96),rgba(2,6,23,.90),rgba(2,6,23,.80));
+      background:linear-gradient(to bottom,rgba(2,6,23,.96),rgba(2,6,23,.88),rgba(2,6,23,.72));
       border-bottom:1px solid rgba(148,163,184,.12);
     }
     .nav{
@@ -54,8 +60,6 @@
       display:flex;align-items:center;justify-content:space-between;gap:1rem;
     }
     .nav-left{display:flex;align-items:center;gap:.75rem}
-
-    /* Real logo slot */
     .logo-wrap{
       width:34px;height:34px;border-radius:12px;
       background:
@@ -70,27 +74,26 @@
       width:26px;height:26px;object-fit:contain;
       filter:drop-shadow(0 6px 12px rgba(0,0,0,.35));
     }
-
     .logo-text{display:flex;flex-direction:column}
     .logo-text span:first-child{
-      font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;
+      font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;
     }
     .logo-text span:last-child{font-size:.72rem;color:var(--muted)}
-
     .nav-menu{
-      display:flex;align-items:center;gap:1.3rem;font-size:.86rem;
+      display:flex;align-items:center;gap:1.2rem;font-size:.86rem;
     }
-    .nav-menu a{color:var(--muted);font-weight:500;white-space:nowrap;position:relative}
+    .nav-menu a{color:var(--muted);font-weight:600;white-space:nowrap;position:relative}
     .nav-menu a::after{
       content:"";position:absolute;left:0;bottom:-.28rem;width:0;height:2px;border-radius:999px;
-      background:linear-gradient(90deg,var(--info),var(--ok));transition:width .16s ease-out;
+      background:linear-gradient(90deg,var(--info),var(--ok));
+      transition:width .16s ease-out;
     }
     .nav-menu a:hover{color:var(--text)}
     .nav-menu a:hover::after{width:100%}
-
     .nav-cta{display:flex;align-items:center;gap:.6rem}
+
     .btn{
-      border-radius:999px;padding:.52rem 1.2rem;font-size:.86rem;font-weight:650;
+      border-radius:999px;padding:.52rem 1.2rem;font-size:.86rem;font-weight:750;
       border:1px solid transparent;cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
       transition:transform .08s ease, box-shadow .08s ease, background .1s ease, border-color .1s ease, color .1s ease, opacity .1s ease;
@@ -99,141 +102,153 @@
     }
     .btn:disabled{opacity:.6;cursor:not-allowed}
     .btn-primary{
-      background:radial-gradient(circle at top left,var(--info) 0,#16a085 45%,#0f172a 100%);
-      color:#f9fafb;box-shadow:0 14px 40px rgba(15,23,42,.9);
+      background:radial-gradient(circle at top left,var(--info) 0,#16a085 45%,#0b1220 100%);
+      color:#f9fafb;box-shadow:0 16px 46px rgba(15,23,42,.92);
     }
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 55px rgba(15,23,42,.95)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 22px 64px rgba(15,23,42,.95)}
     .btn-ghost{
       background:transparent;color:var(--muted);border-color:rgba(148,163,184,.35);
     }
     .btn-ghost:hover{color:var(--text);background:rgba(15,23,42,.75)}
     .btn-link{
       background:transparent;border-color:transparent;padding:.2rem .2rem;
-      color:#93c5fd;font-weight:650;border-radius:8px;
+      color:#93c5fd;font-weight:750;border-radius:8px;
     }
     .btn-link:hover{color:#e5e7eb;text-decoration:underline;text-underline-offset:3px}
 
-    main{flex:1}
-    .container{max-width:1140px;margin:0 auto;padding:2.4rem 1.4rem 3.2rem}
+    .container{max-width:1140px;margin:0 auto;padding:2.5rem 1.4rem 3.2rem}
 
     /* HERO */
     .hero{
       display:grid;
-      grid-template-columns:minmax(0,3.1fr) minmax(0,2.8fr);
-      gap:3rem;align-items:center;
+      grid-template-columns:minmax(0,3.2fr) minmax(0,2.6fr);
+      gap:2.6rem;align-items:center;
       padding-top:2.1rem;padding-bottom:2.2rem;
     }
     .hero-tag{
       display:inline-flex;align-items:center;gap:.55rem;
-      padding:.28rem .8rem;border-radius:999px;
+      padding:.3rem .85rem;border-radius:999px;
       background:rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.4);
       font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-      margin-bottom:.85rem;
+      margin-bottom:.95rem;
     }
-    .dot{width:7px;height:7px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.25)}
-    .hero-tag span:last-child{display:inline-flex;align-items:center;gap:.3rem;color:#bbf7d0}
-
+    .dot{width:7px;height:7px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.22)}
+    .hero-tag b{color:#bbf7d0;font-weight:850;letter-spacing:.12em}
     h1{
-      font-size:clamp(2.35rem,3vw + 1.6rem,3.1rem);
-      line-height:1.1;margin-bottom:.75rem;color:#f9fafb;
+      font-size:clamp(2.35rem,3vw + 1.6rem,3.25rem);
+      line-height:1.06;margin-bottom:.75rem;color:#f9fafb;
     }
     .hero-highlight{
       background:linear-gradient(120deg,var(--info),var(--ok),var(--violet));
       -webkit-background-clip:text;color:transparent;
     }
-    .hero p{font-size:.98rem;color:var(--muted);max-width:36rem;margin-bottom:1rem}
+    .hero p{font-size:1.0rem;color:var(--muted);max-width:38rem;margin-bottom:1rem}
 
-    .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin-bottom:.9rem}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.78rem;color:var(--muted)}
-    .hero-meta span{display:inline-flex;align-items:center;gap:.35rem}
-
-    /* Benefit chips */
-    .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin:.85rem 0 1.1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin:.9rem 0 1.15rem}
     .chip{
       display:inline-flex;align-items:center;gap:.45rem;
-      padding:.38rem .7rem;border-radius:999px;
+      padding:.4rem .75rem;border-radius:999px;
       background:rgba(15,23,42,.86);
-      border:1px solid rgba(148,163,184,.30);
+      border:1px solid rgba(148,163,184,.28);
       font-size:.78rem;color:#cbd5e1;
       box-shadow:0 12px 28px rgba(0,0,0,.35);
     }
     .chip i{
       width:18px;height:18px;border-radius:999px;
       background:rgba(56,189,248,.18);
-      border:1px solid rgba(56,189,248,.35);
+      border:1px solid rgba(56,189,248,.32);
       display:inline-grid;place-items:center;
       font-style:normal;font-size:.74rem;color:#e5e7eb;
     }
 
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;margin-bottom:.7rem}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:1.1rem;font-size:.78rem;color:var(--muted)}
+    .hero-meta span{display:inline-flex;align-items:center;gap:.35rem}
+
+    /* Right panel - "what you get" */
     .hero-panel{
-      position:relative;border-radius:26px;
-      padding:1.6rem 1.5rem 1.3rem;
+      position:relative;border-radius:var(--r-xl);
+      padding:1.2rem 1.2rem 1.1rem;
       background:
-        radial-gradient(circle at 0 0,var(--info) 0,transparent 55%),
-        radial-gradient(circle at 100% 100%,var(--ok) 0,transparent 50%),
-        linear-gradient(145deg,#020617,#020617 40%,#020617 100%);
-      box-shadow:var(--shadow);border:1px solid rgba(148,163,184,.32);
+        radial-gradient(circle at 0 0, rgba(56,189,248,.22) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(34,197,94,.18) 0, transparent 55%),
+        rgba(15,23,42,.92);
+      border:1px solid rgba(148,163,184,.30);
+      box-shadow:var(--shadow);
       overflow:hidden;isolation:isolate;
     }
     .hero-panel::after{
-      content:"";position:absolute;inset:-40%;opacity:.28;
+      content:"";position:absolute;inset:-40%;opacity:.22;
       background:
-        radial-gradient(circle at 10% 0, rgba(248,250,252,.2), transparent 60%),
-        radial-gradient(circle at 80% 100%, rgba(248,250,252,.16), transparent 55%);
+        radial-gradient(circle at 10% 0, rgba(248,250,252,.18), transparent 60%),
+        radial-gradient(circle at 80% 100%, rgba(248,250,252,.14), transparent 55%);
       mix-blend-mode:screen;pointer-events:none;
     }
     .hero-panel-inner{position:relative;z-index:1}
-    .hero-panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
-    .hero-panel-title{font-size:.86rem;font-weight:800;color:#e5e7eb}
-    .hero-panel-caption{font-size:.75rem;color:#cbd5f5}
+    .panel-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.85rem}
+    .panel-title{font-size:.86rem;font-weight:900;color:#e5e7eb}
     .badge{
-      padding:.22rem .7rem;border-radius:999px;background:rgba(15,23,42,.85);
-      border:1px solid rgba(148,163,184,.45);
+      padding:.22rem .7rem;border-radius:999px;background:rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.35);
       font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#e5e7eb;
+      white-space:nowrap;
     }
-    .metrics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-bottom:1.1rem}
-    .metric{
-      border-radius:14px;padding:.8rem .85rem;
-      background:rgba(15,23,42,.92);border:1px solid rgba(148,163,184,.4);
-      backdrop-filter:blur(10px);
+    .stack{display:grid;gap:.65rem}
+    .stack-item{
+      display:flex;gap:.7rem;align-items:flex-start;
+      padding:.75rem .8rem;border-radius:14px;
+      background:rgba(2,6,23,.32);
+      border:1px solid rgba(148,163,184,.20);
     }
-    .metric-label{font-size:.7rem;color:#cbd5e1;margin-bottom:.12rem}
-    .metric-value{font-size:1.18rem;font-weight:900;color:#e5e7eb}
-    .metric-caption{font-size:.72rem;color:#9ca3af}
-    .timeline{margin-top:.4rem;border-radius:999px;height:6px;background:rgba(15,23,42,.9);overflow:hidden;border:1px solid rgba(148,163,184,.4)}
-    .timeline-fill{height:100%;width:72%;border-radius:999px;background:linear-gradient(90deg,var(--ok),var(--info))}
+    .icon{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background:rgba(56,189,248,.14);
+      border:1px solid rgba(56,189,248,.22);
+      font-weight:900;
+      flex-shrink:0;
+    }
+    .stack-item b{display:block;font-size:.92rem;line-height:1.2;margin-bottom:.12rem}
+    .stack-item p{color:var(--muted);font-size:.82rem;line-height:1.4}
+    .mini-row{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.65rem}
+    .mini-chip{
+      font-size:.72rem;color:#cbd5e1;
+      border:1px solid rgba(148,163,184,.24);
+      background:rgba(15,23,42,.60);
+      padding:.28rem .55rem;border-radius:999px;
+    }
 
-    /* Sections */
+    /* SECTIONS */
     .section{padding-top:2.7rem;padding-bottom:2rem}
-    .section-header{display:flex;justify-content:space-between;align-items:flex-end;gap:1.6rem;margin-bottom:1.4rem}
+    .section-header{display:flex;justify-content:space-between;align-items:flex-end;gap:1.6rem;margin-bottom:1.35rem}
     .section-kicker{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-    .section-title{font-size:1.48rem;color:#f9fafb;line-height:1.2}
-    .section-subtitle{font-size:.92rem;color:var(--muted);max-width:36rem}
+    .section-title{font-size:1.52rem;color:#f9fafb;line-height:1.2}
+    .section-subtitle{font-size:.92rem;color:var(--muted);max-width:42rem}
 
-    /* Split sections */
     .split{
       display:grid;
-      grid-template-columns:minmax(0, 2.2fr) minmax(0, 2fr);
-      gap:2rem;
+      grid-template-columns:minmax(0, 2.1fr) minmax(0, 2.1fr);
+      gap:1.2rem;
       align-items:start;
     }
     .panel{
       border-radius:var(--r-lg);
-      background:radial-gradient(circle at top right, rgba(56,189,248,.16), transparent 55%),
-                 radial-gradient(circle at bottom left, rgba(168,85,247,.14), transparent 55%),
-                 rgba(15,23,42,.92);
-      border:1px solid rgba(148,163,184,.30);
-      box-shadow:0 20px 55px rgba(0,0,0,.55);
-      padding:1.15rem 1.2rem;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,.14), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(168,85,247,.12), transparent 55%),
+        rgba(15,23,42,.92);
+      border:1px solid rgba(148,163,184,.26);
+      box-shadow:0 18px 52px rgba(0,0,0,.52);
+      padding:1.05rem 1.1rem;
     }
 
-    /* “Pain” list */
-    .pain-list{display:grid;gap:.9rem;margin-top:.9rem}
+    /* Pain list */
+    .pain-list{display:grid;gap:.75rem;margin-top:.8rem}
     .pain{
-      display:flex;gap:.75rem;align-items:flex-start;
-      padding:.85rem .9rem;border-radius:14px;
-      background:rgba(2,6,23,.28);
-      border:1px solid rgba(148,163,184,.20);
+      display:flex;gap:.7rem;align-items:flex-start;
+      padding:.8rem .85rem;border-radius:14px;
+      background:rgba(2,6,23,.25);
+      border:1px solid rgba(148,163,184,.18);
     }
     .pill{
       width:34px;height:34px;border-radius:999px;
@@ -243,52 +258,74 @@
       color:#fecaca;font-weight:900;
       flex-shrink:0;
     }
-    .pain b{display:block;font-size:.92rem;margin-bottom:.15rem}
-    .pain p{color:var(--muted);font-size:.84rem}
+    .pain b{display:block;font-size:.92rem;margin-bottom:.12rem}
+    .pain p{color:var(--muted);font-size:.84rem;line-height:1.4}
 
-    /* Digital worker log */
+    /* Monospace log */
     .log{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       font-size:.78rem;
       background:rgba(2,6,23,.35);
-      border:1px solid rgba(148,163,184,.25);
+      border:1px solid rgba(148,163,184,.22);
       border-radius:14px;
-      padding:.9rem .85rem;
-      max-height:260px;overflow:auto;
+      padding:.85rem .8rem;
+      max-height:280px;overflow:auto;
     }
     .log-line{display:flex;gap:.55rem;align-items:baseline;margin-bottom:.25rem}
     .log-time{color:#6b7280;flex-shrink:0}
     .log-msg{color:#e5e7eb}
     .log-msg span{color:var(--ok)}
 
+    /* Value grid */
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .mini{
+      border-radius:var(--r-lg);
+      background:rgba(15,23,42,.88);
+      border:1px solid rgba(148,163,184,.26);
+      padding:1rem 1rem .95rem;
+      box-shadow:0 14px 35px rgba(0,0,0,.45);
+    }
+    .mini h4{font-size:.98rem;font-weight:900;margin-bottom:.25rem}
+    .mini p{font-size:.82rem;color:var(--muted);line-height:1.45}
+    .mini .ico{
+      width:34px;height:34px;border-radius:12px;
+      background:rgba(56,189,248,.12);
+      border:1px solid rgba(56,189,248,.22);
+      display:grid;place-items:center;
+      margin-bottom:.55rem;
+      font-weight:900;
+    }
+
     /* Use case cards */
     .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem}
     .uc{
       border-radius:var(--r-lg);
       padding:1.05rem 1.15rem 1.05rem;
-      background:radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 55%),
-                 radial-gradient(circle at bottom right, rgba(34,197,94,.14), transparent 55%),
-                 rgba(15,23,42,.92);
-      border:1px solid rgba(148,163,184,.28);
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(34,197,94,.12), transparent 55%),
+        rgba(15,23,42,.92);
+      border:1px solid rgba(148,163,184,.26);
       box-shadow:0 18px 45px rgba(0,0,0,.5);
     }
-    .uc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
-    .uc h3{font-size:1.02rem;font-weight:850;line-height:1.2}
+    .uc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.45rem}
+    .uc h3{font-size:1.02rem;font-weight:900;line-height:1.2}
     .tag{
       padding:.24rem .55rem;border-radius:999px;
-      background:rgba(15,23,42,.85);
-      border:1px solid rgba(148,163,184,.30);
+      background:rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.26);
       font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#e5e7eb;
       flex-shrink:0;
     }
-    .uc p{color:var(--muted);font-size:.86rem;margin:.35rem 0 .6rem}
+    .uc p{color:var(--muted);font-size:.86rem;margin:.35rem 0 .6rem;line-height:1.45}
     .result{
       display:flex;gap:.55rem;align-items:flex-start;
       padding:.6rem .7rem;border-radius:14px;
       background:rgba(34,197,94,.08);
-      border:1px solid rgba(34,197,94,.20);
+      border:1px solid rgba(34,197,94,.18);
       color:#bbf7d0;
       font-size:.82rem;
+      line-height:1.35;
     }
     .result i{
       width:20px;height:20px;border-radius:999px;
@@ -305,7 +342,7 @@
     .step{
       background:rgba(15,23,42,.86);
       border-radius:var(--r-md);
-      border:1px solid rgba(148,163,184,.28);
+      border:1px solid rgba(148,163,184,.26);
       padding:.95rem 1rem;
       box-shadow:0 14px 35px rgba(0,0,0,.45);
     }
@@ -313,86 +350,66 @@
       width:24px;height:24px;border-radius:999px;
       background:radial-gradient(circle at 30% 0,var(--info),var(--ok));
       color:#0f172a;
-      font-weight:900;
+      font-weight:950;
       font-size:.78rem;
       display:flex;align-items:center;justify-content:center;
       margin-bottom:.5rem;
     }
-    .step-title{font-size:.96rem;font-weight:850;margin-bottom:.25rem}
-    .step-text{font-size:.82rem;color:var(--muted)}
-
-    /* Trust / Control */
-    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-    .mini{
-      border-radius:var(--r-lg);
-      background:rgba(15,23,42,.86);
-      border:1px solid rgba(148,163,184,.28);
-      padding:1rem 1rem .95rem;
-      box-shadow:0 14px 35px rgba(0,0,0,.45);
-    }
-    .mini h4{font-size:.95rem;font-weight:850;margin-bottom:.25rem}
-    .mini p{font-size:.82rem;color:var(--muted)}
-    .mini .ico{
-      width:34px;height:34px;border-radius:12px;
-      background:rgba(56,189,248,.12);
-      border:1px solid rgba(56,189,248,.22);
-      display:grid;place-items:center;
-      margin-bottom:.55rem;
-      font-weight:900;
-    }
+    .step-title{font-size:.96rem;font-weight:900;margin-bottom:.25rem}
+    .step-text{font-size:.82rem;color:var(--muted);line-height:1.45}
 
     /* CTA band */
     .cta-band{
-      border-radius:26px;
-      padding:1.25rem 1.25rem;
+      border-radius:var(--r-xl);
+      padding:1.2rem 1.2rem;
       background:
         radial-gradient(circle at top left, rgba(56,189,248,.18), transparent 55%),
         radial-gradient(circle at bottom right, rgba(34,197,94,.16), transparent 55%),
         rgba(15,23,42,.92);
-      border:1px solid rgba(148,163,184,.30);
+      border:1px solid rgba(148,163,184,.28);
       box-shadow:0 22px 60px rgba(0,0,0,.55);
       display:flex;justify-content:space-between;align-items:center;gap:1.2rem;flex-wrap:wrap;
     }
-    .cta-band h3{font-size:1.15rem;font-weight:900}
-    .cta-band p{color:var(--muted);font-size:.86rem;max-width:44rem}
+    .cta-band h3{font-size:1.15rem;font-weight:950}
+    .cta-band p{color:var(--muted);font-size:.86rem;max-width:48rem;line-height:1.45}
 
     /* Contact */
     .contact-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,2.2fr);gap:2rem}
     .contact-form-card{
       background:rgba(15,23,42,.96);
       border-radius:var(--r-lg);
-      border:1px solid var(--border);
-      padding:1.3rem 1.4rem 1.2rem;
+      border:1px solid rgba(148,163,184,.28);
+      padding:1.25rem 1.35rem 1.15rem;
       box-shadow:var(--shadow);
       max-width:520px;
     }
     input,textarea{
-      width:100%;margin-top:.22rem;padding:.5rem .65rem;
-      border-radius:9px;border:1px solid rgba(148,163,184,.6);
-      background:rgba(15,23,42,.9);color:#e5e7eb;font-size:.84rem;outline:none;
+      width:100%;margin-top:.22rem;padding:.52rem .68rem;
+      border-radius:9px;border:1px solid rgba(148,163,184,.55);
+      background:rgba(2,6,23,.45);color:#e5e7eb;font-size:.84rem;outline:none;
     }
     input:focus,textarea:focus{border-color:var(--info);box-shadow:0 0 0 1px rgba(56,189,248,.55)}
     textarea{resize:vertical;min-height:110px}
     .form-grid{display:grid;gap:.7rem}
     .form-footer{margin-top:.9rem;display:flex;justify-content:space-between;align-items:center;gap:.7rem;flex-wrap:wrap}
     .form-note{font-size:.73rem;color:var(--muted)}
-    .contact-details{font-size:.86rem;color:var(--muted)}
+    .contact-details{font-size:.86rem;color:var(--muted);line-height:1.55}
     .contact-details strong{color:#e5e7eb}
-    .contact-details p + p{margin-top:.5rem}
+    .contact-details p + p{margin-top:.55rem}
 
-    footer{border-top:1px solid rgba(148,163,184,.25);background:rgba(2,6,23,.98)}
+    footer{border-top:1px solid rgba(148,163,184,.20);background:rgba(2,6,23,.96)}
     .footer-inner{
-      max-width:1140px;margin:0 auto;padding:1.3rem 1.4rem 1.6rem;
+      max-width:1140px;margin:0 auto;padding:1.25rem 1.4rem 1.55rem;
       display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;
       font-size:.8rem;color:var(--muted);
     }
     .footer-links{display:flex;gap:1rem;flex-wrap:wrap}
     .footer-links a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 
-    /* ===== AUTH MODAL ===== */
+    /* AUTH MODAL */
     .auth-backdrop{
       position:fixed;inset:0;
-      background:rgba(2,6,23,.72);
+      background:rgba(2,6,23,.74);
       backdrop-filter:blur(10px);
       display:none;
       align-items:center;
@@ -414,16 +431,16 @@
     }
     .auth-head{
       display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
-      padding:1.1rem 1.2rem .9rem;
-      border-bottom:1px solid rgba(148,163,184,.18);
+      padding:1.05rem 1.15rem .85rem;
+      border-bottom:1px solid rgba(148,163,184,.16);
     }
     .auth-title{
-      font-size:1rem;font-weight:900;color:#f9fafb;
+      font-size:1rem;font-weight:950;color:#f9fafb;
       display:flex;align-items:center;gap:.6rem;
     }
     .auth-sub{
       font-size:.82rem;color:var(--muted);margin-top:.2rem;
-      max-width:26rem;
+      max-width:26rem;line-height:1.45;
     }
     .auth-close{
       width:34px;height:34px;border-radius:12px;
@@ -434,11 +451,11 @@
       display:grid;place-items:center;
     }
     .auth-close:hover{background:rgba(15,23,42,.95)}
-    .auth-body{padding:1rem 1.2rem 1.2rem}
+    .auth-body{padding:1rem 1.15rem 1.15rem}
     .tabs{
       display:flex;gap:.5rem;align-items:center;
       background:rgba(2,6,23,.35);
-      border:1px solid rgba(148,163,184,.22);
+      border:1px solid rgba(148,163,184,.20);
       border-radius:999px;
       padding:.3rem;
       width:max-content;
@@ -448,7 +465,7 @@
       border-radius:999px;
       padding:.42rem .75rem;
       font-size:.82rem;
-      font-weight:850;
+      font-weight:900;
       color:var(--muted);
       border:1px solid transparent;
       background:transparent;
@@ -457,7 +474,7 @@
     .tab[aria-selected="true"]{
       color:#e5e7eb;
       background:rgba(15,23,42,.9);
-      border-color:rgba(148,163,184,.25);
+      border-color:rgba(148,163,184,.24);
       box-shadow:0 8px 22px rgba(0,0,0,.35);
     }
     .auth-form{display:grid;gap:.8rem}
@@ -471,6 +488,7 @@
       border:1px solid rgba(239,68,68,.30);
       padding:.55rem .65rem;border-radius:12px;
       font-size:.82rem;
+      line-height:1.35;
     }
     .error[data-show="true"]{display:block}
     .ok{
@@ -480,6 +498,7 @@
       border:1px solid rgba(34,197,94,.30);
       padding:.55rem .65rem;border-radius:12px;
       font-size:.82rem;
+      line-height:1.35;
     }
     .ok[data-show="true"]{display:block}
     .auth-footer{
@@ -489,7 +508,7 @@
     .kbd{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       font-size:.72rem;color:var(--muted);
-      border:1px solid rgba(148,163,184,.28);
+      border:1px solid rgba(148,163,184,.26);
       border-bottom-width:2px;
       border-radius:8px;
       padding:.1rem .35rem;
@@ -509,7 +528,7 @@
       .nav-menu{display:none}
       .nav{padding-inline:1rem}
       .hero-actions{flex-direction:column;align-items:stretch}
-      .hero{padding-top:1.4rem}
+      .hero{padding-top:1.35rem}
     }
     @media (max-width:520px){
       .container{padding-inline:1rem}
@@ -528,101 +547,115 @@
         </div>
         <div class="logo-text">
           <span>DATAPOLIS 2TO2</span>
-          <span>AI works. People decide.</span>
+          <span>Build apps. Run workflows. Control AI.</span>
         </div>
       </div>
 
       <nav class="nav-menu">
-        <a href="#platform">Platform</a>
+        <a href="#what">What you get</a>
         <a href="#why">Why</a>
-        <a href="#workers">Digital Workers</a>
+        <a href="#orchestration">Orchestration</a>
         <a href="#usecases">Use cases</a>
-        <a href="support.html">Support</a>
+        <a href="#how">How it works</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="nav-cta">
-        <button class="btn btn-ghost" type="button">See demo</button>
+        <button class="btn btn-ghost" type="button" id="btnSeeDemoTop">See demo</button>
         <button class="btn btn-ghost" type="button" id="btnSignIn">Sign in</button>
-        <button class="btn btn-primary" type="button">Book a call</button>
+        <button class="btn btn-primary" type="button" id="btnBookTop">Book a call</button>
       </div>
     </div>
   </header>
 
   <main>
-
     <!-- HERO -->
-    <section class="container hero" id="platform">
+    <section class="container hero" id="top">
       <div>
         <div class="hero-tag">
           <span>Datapolis 2to2</span>
-          <span><span class="dot"></span>AI Works, People decide</span>
+          <span style="display:inline-flex;align-items:center;gap:.35rem"><span class="dot"></span><b>Try a pilot in days</b></span>
         </div>
 
         <h1>
-          Two partners.
-          <span class="hero-highlight">Two worlds.</span>
-          One flow.
+          Build workflow apps fast —
+          <span class="hero-highlight">and run AI inside rules.</span>
         </h1>
 
         <p>
-          People and Digital Workers run structured processes together — so work moves faster,
-          stays compliant, and never gets lost between tools.
+          2to2 is a platform to build web apps (especially workflow apps), publish them outside your portal,
+          and orchestrate people + AI agents so work moves — without chaos.
         </p>
 
         <div class="chips" aria-label="Key benefits">
-          <span class="chip"><i>✓</i> Faster intake & decisions</span>
-          <span class="chip"><i>✓</i> No lost cases</span>
-          <span class="chip"><i>✓</i> Control by design</span>
+          <span class="chip"><i>✓</i> Build apps without glue-code</span>
+          <span class="chip"><i>✓</i> Embed & share anywhere</span>
+          <span class="chip"><i>✓</i> AI under control, audited</span>
         </div>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" type="button">Watch it</button>
-          <button class="btn btn-ghost" type="button">Talk to us</button>
+          <button class="btn btn-primary" type="button" id="btnWatch">Watch 90s demo</button>
+          <button class="btn btn-ghost" type="button" id="btnSeeDemoHero">See demo</button>
           <button class="btn btn-ghost" type="button" id="btnSignInHero">Sign in</button>
         </div>
 
         <div class="hero-meta">
-          <span><span class="dot"></span>One flow for people, systems and agents</span>
-          <span>Start small. Scale fast.</span>
+          <span><span class="dot"></span>Every request becomes a tracked case</span>
+          <span>Agents can act — only where you allow</span>
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Datapolis 2to2 preview">
+      <aside class="hero-panel" id="what" aria-label="What you get">
         <div class="hero-panel-inner">
-          <div class="hero-panel-header">
-            <div>
-              <div class="hero-panel-title">2to2 dashboard</div>
-              <div class="hero-panel-caption">Workspace: Back-office</div>
-            </div>
-            <div class="badge">Live</div>
+          <div class="panel-head">
+            <div class="panel-title">What you get in 2to2</div>
+            <div class="badge">Platform</div>
           </div>
 
-          <div class="metrics-grid">
-            <div class="metric">
-              <div class="metric-label">New cases</div>
-              <div class="metric-value">248</div>
-              <div class="metric-caption">today</div>
+          <div class="stack">
+            <div class="stack-item">
+              <div class="icon">A</div>
+              <div>
+                <b>App Builder</b>
+                <p>Create web apps around real work: forms, lists, dashboards and tasks — with workflow at the core.</p>
+                <div class="mini-row">
+                  <span class="mini-chip">Forms</span><span class="mini-chip">Lists</span><span class="mini-chip">Dashboards</span><span class="mini-chip">Roles</span>
+                </div>
+              </div>
             </div>
-            <div class="metric">
-              <div class="metric-label">Agent automation</div>
-              <div class="metric-value">46%</div>
-              <div class="metric-caption">intake + extraction</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Active workflows</div>
-              <div class="metric-value">73</div>
-              <div class="metric-caption">in progress</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Time to decision</div>
-              <div class="metric-value">1:18</div>
-              <div class="metric-caption">avg</div>
-            </div>
-          </div>
 
-          <div class="timeline" aria-hidden="true">
-            <div class="timeline-fill"></div>
+            <div class="stack-item">
+              <div class="icon">↗</div>
+              <div>
+                <b>Share outside the platform</b>
+                <p>Publish modules externally: customers, vendors, citizens, partners — without giving portal access.</p>
+                <div class="mini-row">
+                  <span class="mini-chip">Public pages</span><span class="mini-chip">Embeds</span><span class="mini-chip">Secure access</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stack-item">
+              <div class="icon">AI</div>
+              <div>
+                <b>Agent Studio</b>
+                <p>Build your own AI agents for your domain: classify, extract, draft, route, decide — with your rules.</p>
+                <div class="mini-row">
+                  <span class="mini-chip">Prompts</span><span class="mini-chip">Tools</span><span class="mini-chip">Policies</span><span class="mini-chip">Observability</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stack-item">
+              <div class="icon">WF</div>
+              <div>
+                <b>Process orchestration</b>
+                <p>One state machine runs the work. People and agents collaborate, with approvals and audit trail.</p>
+                <div class="mini-row">
+                  <span class="mini-chip">States</span><span class="mini-chip">Gates</span><span class="mini-chip">SLAs</span><span class="mini-chip">Audit</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
@@ -632,102 +665,103 @@
     <section class="container section" id="why">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Why now</div>
-          <h2 class="section-title">Work breaks where tools don’t talk.</h2>
+          <div class="section-kicker">Why it matters</div>
+          <h2 class="section-title">AI without process becomes a liability.</h2>
           <p class="section-subtitle">
-            Requests arrive by email, Teams, forms, spreadsheets. People copy/paste data, chase approvals,
-            and lose context. AI helps — but without process it becomes chaos.
+            Chat can help, but it doesn’t own the work. There’s no queue, no accountability, no history, no gates.
+            You need a process layer that can prove what happened.
           </p>
         </div>
       </div>
 
       <div class="split">
         <div class="panel">
+          <div class="section-kicker" style="margin-bottom:.35rem">What breaks today</div>
           <div class="pain-list">
             <div class="pain">
               <div class="pill">!</div>
               <div>
-                <b>Invisible queues</b>
-                <p>Nobody knows what’s stuck, who owns it, and what comes next.</p>
+                <b>Work gets lost between tools</b>
+                <p>Email, Teams, spreadsheets, tickets, calls… nobody has the whole picture.</p>
               </div>
             </div>
             <div class="pain">
               <div class="pill">!</div>
               <div>
-                <b>Manual handoffs</b>
-                <p>Delays and mistakes grow with every “can you forward this?” step.</p>
+                <b>Manual handoffs kill speed</b>
+                <p>Copy/paste, forwarding, “can you check this?” — delays and mistakes multiply.</p>
               </div>
             </div>
             <div class="pain">
               <div class="pill">!</div>
               <div>
-                <b>No governance for AI</b>
-                <p>Chatbots can answer — but who is accountable when it goes wrong?</p>
+                <b>No governance for AI actions</b>
+                <p>If an agent makes a wrong move: who approved it, who is responsible, what changed?</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="panel">
-          <div class="section-kicker" style="margin-bottom:.35rem">What changes with 2to2</div>
-          <h3 style="font-size:1.1rem;font-weight:900;line-height:1.25;margin-bottom:.35rem">
-            Every request becomes a tracked case.
+          <div class="section-kicker" style="margin-bottom:.35rem">What 2to2 changes</div>
+          <h3 style="font-size:1.12rem;font-weight:950;line-height:1.25;margin-bottom:.35rem">
+            Every request becomes a tracked case — with a next step.
           </h3>
-          <p style="color:var(--muted);font-size:.88rem;margin-bottom:.7rem">
-            2to2 turns scattered inputs into structured flows. Digital Workers take the first shift:
-            read, extract, route, and prepare actions — while people approve where it matters.
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:.7rem;line-height:1.5">
+            2to2 turns scattered inputs into a single flow. Agents take the first shift:
+            read, extract, route, prepare actions — humans approve where it matters.
           </p>
 
-          <div class="log" aria-label="Example: a Digital Worker handling an incoming request">
-            <div class="log-line"><span class="log-time">08:14:03</span><span class="log-msg">Email received: <span>[“Invoice not booked”]</span></span></div>
-            <div class="log-line"><span class="log-time">08:14:07</span><span class="log-msg">Classified case: <span>Payment issue</span> • Priority: <span>High</span></span></div>
+          <div class="log" aria-label="Example: agent working inside a controlled workflow">
+            <div class="log-line"><span class="log-time">08:14:03</span><span class="log-msg">Inbound email: <span>[“Invoice not booked”]</span></span></div>
+            <div class="log-line"><span class="log-time">08:14:07</span><span class="log-msg">Classified: <span>Payment issue</span> • Priority: <span>High</span></span></div>
             <div class="log-line"><span class="log-time">08:14:11</span><span class="log-msg">Extracted fields: <span>Vendor</span>, <span>Invoice #</span>, <span>Amount</span></span></div>
-            <div class="log-line"><span class="log-time">08:14:14</span><span class="log-msg">Opened workflow: <span>#FIN-2026-184</span> • Assigned to <span>Finance</span></span></div>
-            <div class="log-line"><span class="log-time">08:14:18</span><span class="log-msg">Drafted reply • Waiting for <span>human approval</span></span></div>
+            <div class="log-line"><span class="log-time">08:14:14</span><span class="log-msg">Created case: <span>#FIN-2026-184</span> • Owner: <span>Finance</span></span></div>
+            <div class="log-line"><span class="log-time">08:14:18</span><span class="log-msg">Drafted reply • Waiting for <span>approval gate</span></span></div>
+          </div>
+
+          <div style="margin-top:1rem" class="cta-band">
+            <div>
+              <h3>Want the same for your flow?</h3>
+              <p>We map one real process and show the agent doing the first shift — live. You’ll see what’s automated and what stays gated.</p>
+            </div>
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+              <button class="btn btn-ghost" type="button" id="btnSignInMid">Sign in</button>
+              <button class="btn btn-primary" type="button" id="btnBookMid">Book a call</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DIGITAL WORKERS -->
-    <section class="container section" id="workers">
+    <!-- ORCHESTRATION / CONTROL -->
+    <section class="container section" id="orchestration">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Digital Workers</div>
-          <h2 class="section-title">Not a chatbot. A worker inside your process.</h2>
+          <div class="section-kicker">Orchestration</div>
+          <h2 class="section-title">People + agents. One workflow. Clear control.</h2>
           <p class="section-subtitle">
-            A Digital Worker knows the case state, the rules, the roles, and what it’s allowed to do.
-            It prepares, suggests, and executes — with full audit trail.
+            Agents are not “free to do anything”. They act inside states, permissions and approval gates.
+            Everything is logged. That’s the whole point.
           </p>
         </div>
       </div>
 
       <div class="grid3">
         <div class="mini">
-          <div class="ico">U</div>
-          <h4>Understand</h4>
-          <p>Reads emails, forms and documents. Extracts fields and intent. Turns noise into data.</p>
+          <div class="ico">R</div>
+          <h4>Role-based permissions</h4>
+          <p>Same rules for people and agents. No surprises. No “agent did something random”.</p>
         </div>
         <div class="mini">
-          <div class="ico">A</div>
-          <h4>Act</h4>
-          <p>Creates cases, assigns owners, triggers steps, and prepares responses and documents.</p>
+          <div class="ico">G</div>
+          <h4>Approval gates</h4>
+          <p>Let agents prepare and suggest. Require humans to approve high-risk actions.</p>
         </div>
         <div class="mini">
-          <div class="ico">E</div>
-          <h4>Escalate</h4>
-          <p>Asks humans when context matters. Uses approval gates and logs every action.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:1.2rem" class="cta-band">
-        <div>
-          <h3>AI works. People decide.</h3>
-          <p>Define where agents can act, where humans must approve, and what must be audited. Control is built-in, not bolted on.</p>
-        </div>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <button class="btn btn-ghost" type="button" id="btnSignInMid">Sign in</button>
-          <button class="btn btn-primary" type="button">Book a call</button>
+          <div class="ico">L</div>
+          <h4>Full audit trail</h4>
+          <p>Who/what did it, when, and why — tied to the case state and data changes.</p>
         </div>
       </div>
     </section>
@@ -737,59 +771,58 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Use cases</div>
-          <h2 class="section-title">Where 2to2 pays back fast.</h2>
-          <p class="section-subtitle">Pick one painful flow. Automate the first shift. Measure. Scale.</p>
+          <h2 class="section-title">Where it pays back fast.</h2>
+          <p class="section-subtitle">Pick one painful flow. Put an agent on the first shift. Measure. Scale.</p>
         </div>
       </div>
 
       <div class="cards">
         <article class="uc">
           <div class="uc-top">
-            <h3>Customer Support Intake</h3>
+            <h3>Support intake</h3>
             <span class="tag">Service</span>
           </div>
-          <p>AI reads incoming messages, extracts key data, opens the right case and proposes a response.</p>
-          <div class="result"><i>✓</i> Faster first response, fewer misroutes.</div>
+          <p>Agent reads inbound, extracts key fields, creates a case, routes it, drafts a reply.</p>
+          <div class="result"><i>✓</i> Faster first response. Fewer wrong assignments.</div>
         </article>
 
         <article class="uc">
           <div class="uc-top">
-            <h3>HR Requests & Onboarding</h3>
-            <span class="tag">HR</span>
+            <h3>External requests</h3>
+            <span class="tag">Portal</span>
           </div>
-          <p>One flow for time-off, changes, equipment, approvals — with clear ownership and deadlines.</p>
-          <div class="result"><i>✓</i> Fewer follow-ups, predictable onboarding.</div>
+          <p>Share a form or module outside your platform: suppliers, customers, partners — securely.</p>
+          <div class="result"><i>✓</i> One flow. No “send us an email” chaos.</div>
         </article>
 
         <article class="uc">
           <div class="uc-top">
-            <h3>Finance Documents & Approvals</h3>
+            <h3>Finance approvals</h3>
             <span class="tag">Finance</span>
           </div>
-          <p>Extracts invoice data, checks rules, routes approvals, flags anomalies and missing details.</p>
-          <div class="result"><i>✓</i> Fewer errors, shorter cycle time.</div>
+          <p>Extract invoice data, validate rules, route approvals, flag anomalies and missing details.</p>
+          <div class="result"><i>✓</i> Fewer errors. Shorter cycle time.</div>
         </article>
 
         <article class="uc">
           <div class="uc-top">
-            <h3>IT Requests & Access</h3>
-            <span class="tag">IT</span>
+            <h3>HR onboarding</h3>
+            <span class="tag">HR</span>
           </div>
-          <p>Standard request flows with roles, audit trail and handoffs — from request to fulfillment.</p>
-          <div class="result"><i>✓</i> Less chaos, better compliance.</div>
+          <p>One workflow for accounts, equipment, approvals and checklists — with owners and deadlines.</p>
+          <div class="result"><i>✓</i> Predictable onboarding. Less chasing.</div>
         </article>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- HOW -->
     <section class="container section" id="how">
       <div class="section-header">
         <div>
           <div class="section-kicker">How it works</div>
-          <h2 class="section-title">Start small. Scale fast.</h2>
+          <h2 class="section-title">Pilot first. Then scale.</h2>
           <p class="section-subtitle">
-            You don’t need a big transformation. Pick one process. Put a Digital Worker on the first shift.
-            Expand based on measurable outcomes.
+            Don’t “transform the company”. Pick one process with volume. Ship a pilot. Track numbers. Expand.
           </p>
         </div>
       </div>
@@ -797,93 +830,30 @@
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
-          <div class="step-title">Pick one painful flow</div>
-          <p class="step-text">Support intake, approvals, HR requests, invoices — a real bottleneck with real volume.</p>
+          <div class="step-title">Pick a real bottleneck</div>
+          <p class="step-text">Support intake, approvals, onboarding, invoices — something that hurts weekly.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <div class="step-title">Teach your Digital Worker</div>
-          <p class="step-text">Provide examples, rules and approval gates. The agent learns your language and boundaries.</p>
+          <div class="step-title">Build the app + workflow</div>
+          <p class="step-text">UI + data + roles + states. No duct tape across tools.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <div class="step-title">Measure, then expand</div>
-          <p class="step-text">Track time-to-decision and automation rate. Move more work to agents — safely.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GOVERNANCE -->
-    <section class="container section" id="control">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Control</div>
-          <h2 class="section-title">Automation with accountability.</h2>
-          <p class="section-subtitle">
-            Digital Workers operate inside roles and rules. Humans keep control with approvals.
-            Everything is logged — so you can audit and improve.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid3">
-        <div class="mini">
-          <div class="ico">R</div>
-          <h4>Role-based access</h4>
-          <p>Same rules for people and agents. Clear permissions, predictable behavior.</p>
-        </div>
-        <div class="mini">
-          <div class="ico">G</div>
-          <h4>Approval gates</h4>
-          <p>Let agents prepare and suggest. Require humans to approve where it matters.</p>
-        </div>
-        <div class="mini">
-          <div class="ico">L</div>
-          <h4>Full audit trail</h4>
-          <p>Every action is recorded: who/what did it, when, and why.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLATFORM (VALUE, NOT FEATURES) -->
-    <section class="container section" id="platform-value">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Platform</div>
-          <h2 class="section-title">One model. One portal. One governance.</h2>
-          <p class="section-subtitle">
-            Instead of stitching tools together, 2to2 keeps data, UI, processes, roles and agents aligned.
-            This is why work stays in flow.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid3">
-        <div class="mini">
-          <div class="ico">1</div>
-          <h4>One model</h4>
-          <p>Structured data and UI stay consistent across teams and modules.</p>
-        </div>
-        <div class="mini">
-          <div class="ico">↺</div>
-          <h4>One process layer</h4>
-          <p>Every case has a state, owner, history, and next step.</p>
-        </div>
-        <div class="mini">
-          <div class="ico">☰</div>
-          <h4>One portal</h4>
-          <p>Tasks, dashboards and modules — for people and Digital Workers.</p>
+          <div class="step-title">Add an agent with gates</div>
+          <p class="step-text">Automate the first shift. Keep approvals where risk is high. Audit everything.</p>
         </div>
       </div>
 
       <div style="margin-top:1.2rem" class="cta-band">
         <div>
-          <h3>Want to see it on your process?</h3>
-          <p>We’ll map one real flow and show a Digital Worker doing the first shift — live.</p>
+          <h3>Try it. See it. Decide.</h3>
+          <p>Sign in and explore a demo tenant, or book a call to run your first pilot use case.</p>
         </div>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <button class="btn btn-ghost" type="button">See demo</button>
-          <button class="btn btn-primary" type="button">Book a call</button>
+          <button class="btn btn-ghost" type="button" id="btnSeeDemoBottom">See demo</button>
+          <button class="btn btn-ghost" type="button" id="btnSignInBottom">Sign in</button>
+          <button class="btn btn-primary" type="button" id="btnBookBottom">Book a call</button>
         </div>
       </div>
     </section>
@@ -905,8 +875,10 @@
               <div><label for="name">Name</label><br /><input id="name" type="text" autocomplete="name" /></div>
               <div><label for="email">Work email</label><br /><input id="email" type="email" autocomplete="email" /></div>
               <div><label for="company">Company</label><br /><input id="company" type="text" autocomplete="organization" /></div>
-              <div><label for="message">What do you want to fix?</label><br />
-                <textarea id="message" rows="4" placeholder="E.g. support intake, approvals, onboarding, invoices..."></textarea></div>
+              <div>
+                <label for="message">Which process should we pilot?</label><br />
+                <textarea id="message" rows="4" placeholder="E.g. support intake, approvals, onboarding, invoices..."></textarea>
+              </div>
             </div>
             <div class="form-footer">
               <button class="btn btn-primary" type="submit">Send</button>
@@ -916,7 +888,7 @@
         </div>
 
         <div class="contact-details">
-          <p><strong>Datapolis 2to2</strong><br/>People and Digital Workers run structured processes together.</p>
+          <p><strong>Datapolis 2to2</strong><br/>Build apps fast. Run workflows. Control AI.</p>
           <p><strong>Email:</strong> <a href="mailto:office@datapolis.com">office@datapolis.com</a><br/>
              <strong>Phone:</strong> +48 601 33 20 56</p>
           <p><strong>Address:</strong><br/>ul. Dzielna 21/121A<br/>01-029 Warsaw, Poland</p>
@@ -929,9 +901,9 @@
     <div class="footer-inner">
       <div>© <span id="year"></span> Datapolis. All rights reserved.</div>
       <div class="footer-links">
-        <a href="#platform">Platform</a>
+        <a href="#what">What you get</a>
         <a href="#why">Why</a>
-        <a href="#workers">Digital Workers</a>
+        <a href="#orchestration">Orchestration</a>
         <a href="#usecases">Use cases</a>
         <a href="#contact">Contact</a>
       </div>
@@ -996,9 +968,11 @@
   // ===== AUTH UX =====
   const backdrop = document.getElementById('authBackdrop');
   const closeBtn = document.getElementById('authClose');
+
   const btnSignIn = document.getElementById('btnSignIn');
   const btnSignInHero = document.getElementById('btnSignInHero');
   const btnSignInMid = document.getElementById('btnSignInMid');
+  const btnSignInBottom = document.getElementById('btnSignInBottom');
 
   const tabMagic = document.getElementById('tabMagic');
   const tabPassword = document.getElementById('tabPassword');
@@ -1090,9 +1064,10 @@
     if (e.target === backdrop) closeAuth();
   });
 
-  btnSignIn.addEventListener('click', openAuth);
+  if (btnSignIn) btnSignIn.addEventListener('click', openAuth);
   if (btnSignInHero) btnSignInHero.addEventListener('click', openAuth);
   if (btnSignInMid) btnSignInMid.addEventListener('click', openAuth);
+  if (btnSignInBottom) btnSignInBottom.addEventListener('click', openAuth);
   closeBtn.addEventListener('click', closeAuth);
 
   tabMagic.addEventListener('click', () => setMode('magic'));
@@ -1159,6 +1134,35 @@
     authOk.textContent = "Use magic link to sign in, then reset your password in settings.";
     authOk.dataset.show = "true";
   });
+
+  // Demo buttons (wire your real links)
+  function toast(msg){
+    clearMessages();
+    authOk.textContent = msg;
+    authOk.dataset.show = "true";
+  }
+  const seeDemo = () => toast("Demo: connect this button to your public demo tenant or a recorded walkthrough.");
+  const bookCall = () => toast("Book a call: connect this button to Calendly / your scheduler.");
+
+  const btnSeeDemoTop = document.getElementById('btnSeeDemoTop');
+  const btnSeeDemoHero = document.getElementById('btnSeeDemoHero');
+  const btnSeeDemoBottom = document.getElementById('btnSeeDemoBottom');
+
+  const btnBookTop = document.getElementById('btnBookTop');
+  const btnBookMid = document.getElementById('btnBookMid');
+  const btnBookBottom = document.getElementById('btnBookBottom');
+
+  const btnWatch = document.getElementById('btnWatch');
+
+  if (btnSeeDemoTop) btnSeeDemoTop.addEventListener('click', seeDemo);
+  if (btnSeeDemoHero) btnSeeDemoHero.addEventListener('click', seeDemo);
+  if (btnSeeDemoBottom) btnSeeDemoBottom.addEventListener('click', seeDemo);
+
+  if (btnBookTop) btnBookTop.addEventListener('click', bookCall);
+  if (btnBookMid) btnBookMid.addEventListener('click', bookCall);
+  if (btnBookBottom) btnBookBottom.addEventListener('click', bookCall);
+
+  if (btnWatch) btnWatch.addEventListener('click', () => seeDemo());
 
   // Optional: open modal via query param ?login=1
   (function autoOpen(){
