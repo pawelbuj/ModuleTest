@@ -1,1 +1,68 @@
-<script src="https://collaboration-platform-git-portal-datapolis.vercel.app/embed-module.js" data-datapolis-module="3c386a6f-25b6-4201-b86c-fe8fc9789192" data-base-url="https://collaboration-platform-git-portal-datapolis.vercel.app"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>2to2 App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+html, body {
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  background:#020617; /* ten sam dark co portal */
+  overflow:hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* kontener aplikacji */
+#app {
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  background:#020617;
+}
+
+/* miejsce gdzie embed się wyrenderuje */
+#datapolis-root {
+  flex:1;
+  min-height:0;
+  display:flex;
+  background:#020617;
+}
+
+/* usuwa wszelkie ramki jeśli embed wrzuca iframe */
+#datapolis-root iframe {
+  width:100% !important;
+  height:100% !important;
+  border:none !important;
+  background:#020617;
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+  <div id="datapolis-root"></div>
+</div>
+
+<script>
+/*
+  Embed loader potrzebuje miejsca w DOM,
+  dlatego upewniamy się że root istnieje zanim go załadujemy
+*/
+(function(){
+  const s = document.createElement("script");
+  s.src = "https://collaboration-platform-git-portal-datapolis.vercel.app/embed-module.js";
+  s.async = true;
+  s.dataset.datapolisModule = "3c386a6f-25b6-4201-b86c-fe8fc9789192";
+  s.dataset.baseUrl = "https://collaboration-platform-git-portal-datapolis.vercel.app";
+  s.dataset.mount = "#datapolis-root";   // WYMUSZA gdzie ma się wpiąć
+  document.body.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
