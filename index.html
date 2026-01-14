@@ -1,49 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>2to2 App</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<style>
-html, body {
-  width:100%;
-  height:100%;
-  margin:0;
-  padding:0;
-  background:#020617;
-  overflow:hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-#app {
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  background:#020617;
-}
-
-#datapolis-root {
-  flex:1;
-  min-height:0;
-  display:flex;
-  background:#020617;
-}
-
-#datapolis-root iframe {
-  width:100% !important;
-  height:100% !important;
-  border:none !important;
-  background:#020617;
-}
-</style>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; ... }
+    #datapolis-root { position: fixed; inset: 0; display: flex; }
+    #datapolis-root iframe { width: 100% !important; height: 100% !important; ... }
+  </style>
 </head>
-
 <body>
-<div id="app">
   <div id="datapolis-root"></div>
-</div>
 <!-- Container for the module -->
 <div id="datapolis-module-3c386a6f" style="min-height: 500px;"></div>
 
