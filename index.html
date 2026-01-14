@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Module</title>
   <style>
-    html, body { width: 100%; height: 100%; margin: 0; ... }
-    #datapolis-root { position: fixed; inset: 0; display: flex; }
-    #datapolis-root iframe { width: 100% !important; height: 100% !important; ... }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      overflow: hidden;
+    }
+    #datapolis-root {
+      position: fixed;
+      inset: 0;
+      display: flex;
+    }
+    #datapolis-root iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+    }
   </style>
 </head>
 <body>
   <div id="datapolis-root"></div>
-<!-- Container for the module -->
-<div id="datapolis-module-3c386a6f" style="min-height: 500px;"></div>
-
-<!-- Embed script -->
-<script src="https://collaboration-platform-git-embedapp-datapolis.vercel.app/embed-module.js" data-datapolis-module="3c386a6f-25b6-4201-b86c-fe8fc9789192" data-base-url="https://collaboration-platform-git-embedapp-datapolis.vercel.app" data-container="datapolis-module-3c386a6f""></script>
+  <script src="https://collaboration-platform-git-embedapp-datapolis.vercel.app/embed-module.js" data-datapolis-module="3c386a6f-25b6-4201-b86c-fe8fc9789192" data-base-url="https://collaboration-platform-git-embedapp-datapolis.vercel.app" data-container="datapolis-root" data-border-color="transparent" data-border-radius="0" data-box-shadow="none""></script>
 </body>
 </html>
