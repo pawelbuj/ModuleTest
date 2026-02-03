@@ -1,1 +1,32 @@
-alll
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Module</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      overflow: hidden;
+    }
+    #datapolis-root {
+      position: fixed;
+      inset: 0;
+      display: flex;
+    }
+    #datapolis-root iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="datapolis-root"></div>
+  <script src="https://collaboration-platform-git-googlesheet-datapolis.vercel.app/embed-module.js" data-datapolis-module="92e317cd-208e-4a76-9357-ccd3499b5a69" data-base-url="https://collaboration-platform-git-googlesheet-datapolis.vercel.app" data-container="datapolis-root" data-border-color="transparent" data-border-radius="0" data-box-shadow="none" data-auto-resize="false""></script>
+</body>
+</html>
